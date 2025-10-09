@@ -12,5 +12,7 @@
     minikube version
   '';
 
+  enterShell = "minikube status";
+
   scripts."k".exec = "kubectl $@";
 }
