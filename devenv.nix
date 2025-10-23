@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   packages = with pkgs; [
+    k9s
     kubectl
     kubernetes-helm
     minikube
