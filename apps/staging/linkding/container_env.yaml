@@ -1,22 +1,22 @@
 apiVersion: v1
+data:
+    LD_SUPERUSER_NAME: ENC[AES256_GCM,data:jdeORoZvnho=,iv:/w3x805wc2MbPmeO56CnEJBsDbo499XlmKUJOnGiKlU=,tag:dngoK1KC/XJEG8zpIh0G7g==,type:str]
+    LD_SUPERUSER_PASSWORD: ENC[AES256_GCM,data:608iyF2LUmK96KrX,iv:pebh5YjI3rplKVpopsGb1ag3dLtV5MOILLgpAnzymJg=,tag:PA9BlERj8mapXskKYmPlHw==,type:str]
 kind: Secret
 metadata:
     name: linkding-env
-data:
-    LD_SUPERUSER_NAME: ENC[AES256_GCM,data:RlcyM86wyoo=,iv:lHVZWRUTHtSknbWQeywvGG/3cd11/beZkiCuFzKN84E=,tag:9yxcL2qh0iPfSQheYw2yRA==,type:str]
-    LD_SUPERUSER_PASSWORD: ENC[AES256_GCM,data:UL3px8pvtaeufEQw,iv:yPveXJfSVTgRaVBQxF7zbemKt7uxwNDdINySx/Xu8RU=,tag:/pHF2/FjLgb3CBXCUlThdA==,type:str]
 sops:
     age:
         - recipient: age166s585p6wc3yurjx0a64v9xfw0lfquknt8ewpyqwq4uq7uyqdfpsrde3c8
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOdFFNQ1Fnc3pvR1R2TXZm
-            bWNRSUNrOVlsQjM2M2poTmZyWTM5RDdjVm13CkVpZStyQkxVd1N0enNDMGJDKy9l
-            aWtGVktSMlpFSTYxZUNCVEU3anJoQk0KLS0tIEo4c08zSjRpWStDd2tvbG4xUTdT
-            NktOODZXeVJEbk1oTDFhWlY5c2NkU1UKxOErTIGVmzDzEjF7adx/fsjzD1TQ8zBn
-            Dbq+eRxt2fKLrVWJQo/HpkNP/QJm7fC/X09V3nienrnPN8TILxeb+w==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvTWxUUlV2MHRySjAzVEZG
+            VThFSEhyR3hLTis5Mnh3b2E0a0RBL2pzcFJBCi9nbERlTitpNUhHTGJhK051Y1pq
+            VXpoRHNkOENPZUIvVGxBdlVaMXNJUVEKLS0tIDNyRnJxVm5VZXd4SERiUG1tSUto
+            MGpsckR6KzFPazNjZlZpcS9QVmR3eDQKgaq+WrHW8yebSFH4EbPYjfvowHwMqN9H
+            ATZkW4GtSoMsgeMQ4CAceilfK9Fk0YCLXSu6pPlFMCnh1CMrh6vFng==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-10-24T20:48:42Z"
-    mac: ENC[AES256_GCM,data:29KPnm1ymeF4yF+/b9UgzD3Mqd4vPj3swbVCU5QCiNl/y5o3YixeSA9SU5CKHDJVQa68ayLAayDNovRpg1pZnTMuE6BaNJQ/xdar2lsYv5ICLsyM2/MSHMjsbaSpCbuDxanEvFKgVXGdHku5a8JT8cUCWzKXYkVjc6vjh8LPxFw=,iv:r+LCUHWINKeVkrCwUwHQdwqwFTsgM4PQhgaDguSywRc=,tag:Cishzx/M69ZoX5I4PqaflQ==,type:str]
+    lastmodified: "2025-10-24T21:00:23Z"
+    mac: ENC[AES256_GCM,data:S10lkpCtnJqfHsuOizT+kIman6wF7IpmL4Q5QxDvp69tV22npBuxaARdY6bu3slKh4qMgV8CyRnVwnn6wo5d6pQs5yPNhH55C67x9z7fRj3RnpFBkR3FYb9ArfnlRxBGV1DvOfnH6OszcDa9GvrsrfV4YlW2TvhelcPZ0I6WTMs=,iv:7F7U8Pk4jDTk7lDe/XIHRq/z2G/FjKa3acBVvSyJ2KE=,tag:XoRGOJvlzQywynAtA3sPXw==,type:str]
     encrypted_regex: ^(data|stringData)$
     version: 3.10.2
