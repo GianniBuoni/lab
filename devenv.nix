@@ -1,11 +1,18 @@
 {pkgs, ...}: {
   packages = with pkgs; [
+    # cluster tools
     k9s
     kubectl
     kubernetes-helm
-    minikube
-    rpi-imager
     fluxcd
+
+    # minikube testing
+    minikube
+
+    # extra utilities
+    rpi-imager
+    sops
+    age
   ];
 
   enterTest = ''
