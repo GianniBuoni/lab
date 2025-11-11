@@ -7,4 +7,9 @@ patches:
   - target:
       kind: HelmRelease
       name: kube-prometheus-stack
-    path: grafana-ingress-patch.yaml
+    patch: |-
+      - op: replace
+        path: /spec/values/grafana
+        value:
+          ingress: true
+          hosts: [grafana.noodoodle.us]
