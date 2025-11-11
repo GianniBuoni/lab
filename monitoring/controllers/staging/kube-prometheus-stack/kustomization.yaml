@@ -7,7 +7,7 @@ patches:
   - target:
       kind: HelmRelease
       name: kube-prometheus-stack
-    patch:
+    patch: |-
       - op: replace
         path: spec/values/grafana
         value:
