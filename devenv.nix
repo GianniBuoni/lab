@@ -10,7 +10,7 @@
     minikube
 
     # extra utilities
-    rpi-imager
+    cloudflared
     sops
     age
   ];
