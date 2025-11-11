@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: grafana
+    app: kube-prometheus-stack-grafana
   ports:
     - port: 3000
 ---
