@@ -6,9 +6,9 @@ resources:
 patches:
   - target:
       kind: HelmRelease
-      patch:
-        - values:
-            grafana:
-              ingress: true
-              hosts:
-                - grafana.noodoodle.us
+    patch:
+      - values:
+          grafana:
+            ingress: true
+            hosts:
+              - grafana.noodoodle.us
