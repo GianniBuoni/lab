@@ -1,0 +1,5 @@
+spec:
+  values:
+    grafana:
+      ingress: true
+      hosts: grafana.noodoodle.us
