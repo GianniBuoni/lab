@@ -1,5 +1,7 @@
-spec:
   values:
     grafana:
-      ingress: true
-      hosts: grafana.noodoodle.us
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+      hosts:
+        - grafana.noodoodle.us
