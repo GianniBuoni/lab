@@ -6,9 +6,11 @@ resources:
 patches:
   - target:
       kind: HelmRelease
+      name: kube-prometheus-stack
     patch:
-      - values:
-          grafana:
-            ingress: true
-            hosts:
-              - grafana.noodoodle.us
+      - op: replace
+      - path: spec/values/grafana
+      - value:
+          ingress: true
+          hosts:
+            - grafana.noodoodle.us
