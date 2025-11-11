@@ -3,4 +3,12 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ../../base/kube-pormetheus-stack
-  - ingress.yaml
+patches:
+  - target:
+      kind: HelmRelease
+      patch:
+        - values:
+            grafana:
+              ingress: true
+              hosts:
+                - grafana.noodoodle.us
