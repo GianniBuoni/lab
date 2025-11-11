@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: linkding-svc
 spec:
-  type: ExternalName
-  externalName: linkding-svc.cloudflared.svc.cluster.local
+  type: ClusterIP
   selector:
     app: linkding
   ports:
