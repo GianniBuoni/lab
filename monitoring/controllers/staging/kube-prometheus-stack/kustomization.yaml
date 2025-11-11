@@ -8,7 +8,7 @@ patches:
       kind: HelmRelease
       name: kube-prometheus-stack
     patch: |-
-      - op: add
+      - op: replace
         path: /spec/values/grafana
         value:
           ingress: true
