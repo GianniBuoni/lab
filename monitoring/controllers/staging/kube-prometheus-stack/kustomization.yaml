@@ -9,8 +9,8 @@ patches:
       name: kube-prometheus-stack
     patch:
       - op: replace
-      - path: spec/values/grafana
-      - value:
+        path: spec/values/grafana
+        value:
           ingress: true
           hosts:
             - grafana.noodoodle.us
