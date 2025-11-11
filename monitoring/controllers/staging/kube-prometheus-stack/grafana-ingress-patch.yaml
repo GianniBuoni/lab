@@ -1,4 +1,6 @@
-  values:
+- op: add
+  path: /spec/values
+  value:
     grafana:
       ingress:
         enabled: true
