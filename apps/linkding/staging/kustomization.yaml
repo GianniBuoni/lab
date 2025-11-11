@@ -4,5 +4,3 @@ namespace: linkding
 resources:
   - ../base
   - container_env.yaml
-  - tunnel.yaml
-  - tunnel-secret.yaml
