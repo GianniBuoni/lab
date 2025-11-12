@@ -25,4 +25,5 @@
   enterShell = "minikube status";
 
   scripts."k".exec = "kubectl $@";
+  scripts."fgg".exec = "flux get kustomizations";
 }
