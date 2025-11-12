@@ -5,6 +5,9 @@
   outputs = inputs: import ./outputs.nix inputs;
 
   inputs = {
+    devenv = {
+      url = "github:cachix/devenv";
+    };
     flake-aspects = {
       url = "github:vic/flake-aspects";
     };
