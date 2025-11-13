@@ -12,3 +12,9 @@
   value:
     - kind: Secret
       name: grafana-secret
+      valuesKey: adminPassword
+      targetPath: /grafana/adminPassword
+    - kind: Secret
+      name: grafana-secret
+      valuesKey: adminUser
+      targetPath: /grafana/adminUser
