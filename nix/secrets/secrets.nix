@@ -13,9 +13,7 @@
   ];
 
   agenix-shell.secrets = {
-    cluster_age_secret = {
-      file = _agenix/secrets.age;
-    };
+    SOPS_AGE_KEY.file = _agenix/sops-secret.age;
   };
 
   flake.aspects.devshells.secrets = moduleWithSystem (
