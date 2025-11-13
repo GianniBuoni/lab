@@ -5,6 +5,9 @@
   outputs = inputs: import ./outputs.nix inputs;
 
   inputs = {
+    agenix-shell = {
+      url = "github:aciceri/agenix-shell";
+    };
     devenv = {
       url = "github:cachix/devenv";
     };
