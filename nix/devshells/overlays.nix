@@ -1,5 +1,13 @@
 {
-  flake.aspects.devshells.base = {pkgs, ...}: {
+  lib,
+  moduleWithSystem,
+  ...
+}: {
+  flake.aspects.devshells.base = moduleWithSystem ({
+    config,
+    pkgs,
+    ...
+  }: {
     packages = with pkgs; [
       # cluster tools
       k9s
@@ -13,6 +21,10 @@
       just
     ];
 
+    enterShell = ''
+      source ${lib.getExe config.agenix-shell.installationScript}
+    '';
+
     enterTest = ''
       kubectl version --client=true
       k version --client=true
@@ -22,15 +34,15 @@
 
     scripts."k".exec = "kubectl $@";
     scripts."fgg".exec = "flux get kustomizations";
-  };
+  });
 
-  flake.aspects.devshells.testing = {pkgs, ...}: {
+  flake.aspects.devshells.testing = moduleWithSystem ({pkgs, ...}: {
     packages = with pkgs; [
       # local testing
       k3d
     ];
     env.CLUSTER_BRANCH = "testing";
-  };
+  });
 
   flake.aspects.devshells.staging = {
     env.CLUSTER_BRANCH = "staging";
