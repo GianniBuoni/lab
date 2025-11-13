@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ../../base/kube-pormetheus-stack
+  - grafana-secrets.yaml
 patches:
   - target:
       kind: HelmRelease
