@@ -7,8 +7,3 @@
         ingressClassName: traefik
       hosts:
         - grafana.noodoodle.us
-- op: add
-  path: /spec/valuesFrom
-  value:
-    - kind: Secret
-      name: grafana-secret
