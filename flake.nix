@@ -2,7 +2,7 @@
 # Use `nix run .#write-flake` to regenerate it.
 {
 
-  outputs = inputs: import ./outputs.nix inputs;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./nix);
 
   inputs = {
     agenix = {
