@@ -37,6 +37,10 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixpkgs-unstable";
     };
+    systems = {
+      flake = false;
+      url = "github:nix-systems/default";
+    };
   };
 
 }
