@@ -13,12 +13,20 @@
   ];
 
   agenix-shell.secrets = {
-    SOPS_AGE_KEY.file = _agenix/sops-secret.age;
+    SOPS_AGE_KEY.file = ../_agenix/sops-secret.age;
   };
 
   flake.aspects.devshells.secrets = moduleWithSystem (
-    {inputs', ...}: {
+    {
+      inputs',
+      config,
+      ...
+    }: {
       packages = with inputs'.agenix.packages; [agenix];
+
+      devshell.startup.secrets.text = ''
+        source ${lib.getExe config.agenix-shell.installationScript}
+      '';
     }
   );
 }

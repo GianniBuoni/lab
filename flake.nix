@@ -11,8 +11,8 @@
     agenix-shell = {
       url = "github:aciceri/agenix-shell";
     };
-    devenv = {
-      url = "github:cachix/devenv";
+    devshell = {
+      url = "github:numtide/devshell";
     };
     flake-aspects = {
       url = "github:vic/flake-aspects";

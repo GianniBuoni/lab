@@ -4,13 +4,13 @@
   config,
   ...
 }: {
-  flake-file.inputs.devenv.url = "github:cachix/devenv";
-  imports = lib.optionals (inputs ? devenv) [
-    inputs.devenv.flakeModule
+  flake-file.inputs.devshell.url = "github:numtide/devshell";
+  imports = lib.optionals (inputs ? devshell) [
+    inputs.devshell.flakeModule
   ];
 
-  perSystem.devenv.shells = with config.flake.aspects.devshells; {
-    default.imports = [base testing];
+  perSystem.devshells = with config.flake.aspects.devshells; {
+    default.imports = [base secrets testing];
     staging.imports = [base secrets staging];
   };
 }
