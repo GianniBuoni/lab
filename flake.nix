@@ -5,12 +5,6 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./nix);
 
   inputs = {
-    agenix = {
-      url = "github:ryantm/agenix";
-    };
-    agenix-shell = {
-      url = "github:aciceri/agenix-shell";
-    };
     devshell = {
       url = "github:numtide/devshell";
     };

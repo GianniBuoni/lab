@@ -10,7 +10,7 @@
   ];
 
   perSystem.devshells = with config.flake.aspects.devshells; {
-    default.imports = [base secrets testing];
-    staging.imports = [base secrets staging];
+    default.imports = [base testing];
+    staging.imports = [base staging];
   };
 }
