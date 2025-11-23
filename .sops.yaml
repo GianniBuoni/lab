@@ -1,4 +1,11 @@
+clusters:
+  - &testing age1z9nrhjh6tn4zx6ulh96y7eage6m35lt0lptq89r6l4edchzx3uqqwyrf03
+  - &staging age166s585p6wc3yurjx0a64v9xfw0lfquknt8ewpyqwq4uq7uyqdfpsrde3c8
 creation_rules:
-  - path_regex: \.yaml$
+  - path_regex: testing.*\.yaml$
     encrypted_regex: ^(data|stringData)$
-    age: age166s585p6wc3yurjx0a64v9xfw0lfquknt8ewpyqwq4uq7uyqdfpsrde3c8
+    age: *testing
+
+  - path_regex: staging.*\.yaml$
+    encrypted_regex: ^(data|stringData)$
+    age: *staging
