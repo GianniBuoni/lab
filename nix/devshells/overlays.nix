@@ -5,21 +5,14 @@
     value = "/run/secrets/cluster-secrets/${cluster}";
   };
 in {
-  flake.aspects.devshells.testing = moduleWithSystem ({pkgs, ...}: {
+  flake.aspects.devshells.staging = moduleWithSystem ({pkgs, ...}: {
     packages = with pkgs; [
       # local testing
       k3d
     ];
     env = [
-      (mkEnv "CLUSTER_BRANCH" "testing")
-      (mkSopAgeEnv "testing")
-    ];
-  });
-
-  flake.aspects.devshells.staging = {
-    env = [
       (mkEnv "CLUSTER_BRANCH" "staging")
       (mkSopAgeEnv "staging")
     ];
-  };
+  });
 }

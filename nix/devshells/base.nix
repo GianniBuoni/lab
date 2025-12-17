@@ -9,8 +9,10 @@
     inputs.devshell.flakeModule
   ];
 
-  perSystem.devshells = with config.flake.aspects.devshells; {
-    default.imports = [base testing];
-    staging.imports = [base staging];
+  perSystem = {self', ...}: {
+    devshells = with config.flake.aspects.devshells; {
+      staging.imports = [base staging];
+    };
+    devShells.default = self'.devShells.staging;
   };
 }

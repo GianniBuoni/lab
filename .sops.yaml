@@ -1,12 +1,7 @@
 clusters:
-  - &testing age1hx49ntpympqcutqwrcrd6u4pggug99pxuy794vcx8us35hcp73vs3dctf5
   - &staging age1yjhhcgfpsux6tjql3x75hn49e9yyjph4q5ltx67gt6lhryurd9sqgjsam2
   - &prod age199lgwasr5kstnswjdp7a48l34n2xjgn2zvxcy6gsfng90c9y3caszh6lq0
 creation_rules:
-  - path_regex: testing.*\.yaml$
-    encrypted_regex: ^(data|stringData)$
-    age: *testing
-
   - path_regex: staging.*\.yaml$
     encrypted_regex: ^(data|stringData)$
     age: *staging
