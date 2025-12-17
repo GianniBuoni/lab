@@ -1,11 +1,5 @@
 # requires that flux kustomization-file has the same name
 # as the system kustomization
-dry-run KUSTOMIZATION KUSTOMIZE_FILE:
-    flux build kustomization {{KUSTOMIZATION}} \
-    --dry-run \
-    --kustomization-file "./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
-    --path {{KUSTOMIZE_FILE}}
-
 build KUSTOMIZATION KUSTOMIZE_FILE:
     flux build kustomization {{KUSTOMIZATION}} \
     --kustomization-file "./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
