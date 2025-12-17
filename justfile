@@ -10,8 +10,8 @@ rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
 
 # create new testing cluster via k3d
-create-test:
-    k3d cluster create \
+create-test CONTEXT:
+    k3d cluster create {{CONTEXT}} \
     --no-lb \
     --k3s-arg "--disable=traefik@server:0" \
     --image rancher/k3s:latest
