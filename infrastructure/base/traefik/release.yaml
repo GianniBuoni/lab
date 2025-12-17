@@ -16,6 +16,7 @@ kind: HelmRelease
 metadata:
   name: traefik-helm-chart
 spec:
+  interval: 12h
   chart:
     spec:
       chart: traefik
