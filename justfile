@@ -10,8 +10,8 @@ rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
 
 # create new testing cluster via k3d
-create-test CONTEXT:
-    k3d cluster create {{CONTEXT}} \
+create:
+    k3d cluster create $CLUSTER_BRANCH \
     --no-lb \
     --k3s-arg "--disable=traefik@server:0" \
     --image rancher/k3s:latest
@@ -19,9 +19,9 @@ create-test CONTEXT:
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
 
 # bootstrap flux onto current context
-bootstrap DEPLOY_KEY_PATH CONTEXT:
+bootstrap DEPLOY_KEY_PATH:
     flux bootstrap git \
     --private-key-file={{DEPLOY_KEY_PATH}} \
-    --url {{FLUX_GIT_REPO}} \
+    --url={{FLUX_GIT_REPO}} \
     --branch=main \
-    --path=clusters/{{CONTEXT}}
+    --path="clusters/$CLUSTER_BRANCH"
