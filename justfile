@@ -6,6 +6,11 @@ dry-run KUSTOMIZATION KUSTOMIZE_FILE:
     --kustomization-file "./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
     --path {{KUSTOMIZE_FILE}}
 
+build KUSTOMIZATION KUSTOMIZE_FILE:
+    flux build kustomization {{KUSTOMIZATION}} \
+    --kustomization-file "./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
+    --path {{KUSTOMIZE_FILE}}
+
 rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
 
