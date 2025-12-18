@@ -11,6 +11,6 @@ spec:
     kind: GitRepository
     name: flux-system
   decryption:
-  provider: sops
-  sercetRef:
-    name: sops-age
+    provider: sops
+    sercetRef:
+      name: sops-age
