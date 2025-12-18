@@ -23,8 +23,7 @@ spec:
       version: 80.5.x
       sourceRef:
         kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: monitoring
+        name: prometheus-community
       interval: 12h
   install:
     crds: Create
