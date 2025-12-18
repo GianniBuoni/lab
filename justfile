@@ -17,10 +17,14 @@ create:
 
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
 
-# bootstrap flux onto current context
+# bootstrap flux and sops onto current context
 bootstrap DEPLOY_KEY_PATH:
     flux bootstrap git \
     --private-key-file={{DEPLOY_KEY_PATH}} \
     --url={{FLUX_GIT_REPO}} \
     --branch=main \
     --path="clusters/$CLUSTER_BRANCH"
+    cat $SOPS_AGE_KEY_FILE |
+    kubectl create secret generic sops-age \
+    --namespace=flux-system \
+    --from-file=age.agekey=/dev/stdin
