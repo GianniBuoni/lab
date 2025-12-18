@@ -2,3 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base/metallb/
+# patched might need to change depending on the state of
+# the docker network.
+# Inspect the subnet of the k3d cluster you're using for IP pools.
+patches:
+  - target:
+      kind: IPAddressPool
+    patch: |-
+      - op: replace
+        path: /spec/addresses
+        value:
+          - 172.18.255.10-172.18.255.15
