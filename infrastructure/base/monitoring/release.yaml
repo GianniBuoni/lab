@@ -29,3 +29,14 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
+  values:
+    grafana:
+      admin:
+        existingSecret: "grafana-admin"
+        userKey: admin-user
+        passwordKey: admin-password
+      # ingress:
+      #   enabled: true
+      #   ingressClassName: nginx
+      #   hosts:
+      #     - grafana.noodoodle.us
