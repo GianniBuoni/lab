@@ -32,8 +32,9 @@ spec:
   valuesFrom:
     - kind: Secret
       name: grafana-admin
-      # ingress:
-      #   enabled: true
-      #   ingressClassName: nginx
-      #   hosts:
-      #     - grafana.noodoodle.us
+  values:
+    grafana:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts: []
