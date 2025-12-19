@@ -9,4 +9,4 @@ patches:
       - op: replace
         path: /spec/values/grafana/ingress/hosts
         value:
-          - grafana-staging.noodoole.us
+          - grafana-staging.noodoodle.us
