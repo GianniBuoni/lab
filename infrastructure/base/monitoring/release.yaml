@@ -29,11 +29,12 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  valuesFrom:
-    - kind: Secret
-      name: grafana-admin
-  # values:
-  #   grafana:
+  values:
+    grafana:
+      admin:
+        existingSecret: "grafana-admin"
+        userKey: admin-user
+        passwordKey: admin-password
       # ingress:
       #   enabled: true
       #   ingressClassName: nginx
