@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rook-ceph
+spec:
+  interval: 12h
+  chart:
+    spec:
+      chart: rook-ceph
+      version: 1.18.x
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+      interval: 12h
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
