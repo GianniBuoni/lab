@@ -36,17 +36,17 @@ cephClusterSpec:
         tuneDeviceClass: true
         tuneFastDeviceClass: false
         encrypted: false
-        metadata:
-          name: ceph-data
-        spec:
-          resources:
-            requests:
-              storage: 10Gi
-          storageClassName: local-storage
-          volumeMode: Block
-          accessModes:
-            - ReadWriteOnce
-
+        volumeClaimTemlates:
+          - metadata:
+            name: ceph-data
+            spec:
+              resources:
+                requests:
+                  storage: 10Gi
+              storageClassName: local-storage
+              volumeMode: Block
+              accessModes:
+                - ReadWriteOnce
 ingress:
   dashboard:
     host:
