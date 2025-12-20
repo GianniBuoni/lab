@@ -1,0 +1,82 @@
+# cluster spec made for a k3d environment running on a development machine
+# cluster consists of:
+#
+# - CephFS
+# - Block storage pool
+#
+# Each is backed by pvcs using a local-storage storage class.
+cephClusterSpec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v19.2.3
+  mon:
+    count: 1
+    allowMultiplePerNode: true
+    volumeClaimTemplate:
+      spec:
+        storageClassName: local-storage
+        resources:
+          requests:
+            storage: 1Gi
+  mgr:
+    count: 1
+    allowMultiplePerNode: true
+  dashboard:
+    enabled: true
+    ssl: false
+  crashCollector:
+    disable: true
+
+  storage:
+    useAllNodes: false
+    useAllDevices: false
+    storageClassDeviceSets:
+      - name: rook-ceph-device-set
+        count: 3
+        portable: false
+        tuneDeviceClass: true
+        tuneFastDeviceClass: false
+        encrypted: false
+        metadata:
+          name: ceph-data
+        spec:
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: local-storage
+          volumeMode: Block
+          accessModes:
+            - ReadWriteOnce
+
+ingress:
+  dashboard:
+    host:
+      name: dashboard-staging.noodoodle.us
+    ingressClassName: nginx
+
+cephBlockPools:
+  - name: ceph-blockpool
+    spec:
+      failureDomain: host
+      replicated:
+        size: 1
+    storageClass:
+      enabled: true
+      name: ceph-block
+
+cephFileSystems:
+  - name: ceph-filesystem
+    spec:
+      metadataPool:
+        replicated:
+          size: 1
+      dataPools:
+        - failureDomain: host
+          replicated:
+            size: 1
+      metadataServer:
+        activeCount: 1
+    storageClass:
+      enabled: true
+      isDefault: false
+      name: ceph-filesystem
+cephObjectStores: []
