@@ -8,6 +8,14 @@ build KUSTOMIZATION KUSTOMIZE_FILE:
 rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
 
+# creates a k3d testing cluster and bootstrap flux and sops onto current context
+bootstrap DEPLOY_KEY_PATH: create secrets
+    flux bootstrap git \
+    --private-key-file={{DEPLOY_KEY_PATH}} \
+    --url={{FLUX_GIT_REPO}} \
+    --branch=main \
+    --path="clusters/$CLUSTER_BRANCH"
+
 # create new testing cluster via k3d
 create:
     k3d cluster create $CLUSTER_BRANCH \
@@ -17,14 +25,9 @@ create:
 
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
 
-# bootstrap flux and sops onto current context
-bootstrap DEPLOY_KEY_PATH:
-    flux bootstrap git \
-    --private-key-file={{DEPLOY_KEY_PATH}} \
-    --url={{FLUX_GIT_REPO}} \
-    --branch=main \
-    --path="clusters/$CLUSTER_BRANCH"
-    cat $SOPS_AGE_KEY_FILE |
-    kubectl create secret generic sops-age \
+# adds inital sops secret for flux to use
+secrets:
+    kubectl create ns flux-system
+    cat $SOPS_AGE_KEY_FILE | kubectl create secret generic sops-age \
     --namespace=flux-system \
     --from-file=age.agekey=/dev/stdin
