@@ -36,7 +36,7 @@ cephClusterSpec:
         tuneDeviceClass: true
         tuneFastDeviceClass: false
         encrypted: false
-        volumeClaimTemlates:
+        volumeClaimTemplates:
           - metadata:
             name: ceph-data
             spec:
