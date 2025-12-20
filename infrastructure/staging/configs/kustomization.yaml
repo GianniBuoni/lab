@@ -4,7 +4,7 @@ configMapGenerator:
   - name: rook-ceph-values
     namespace: rook-ceph
     files:
-      - vaules.yaml=rook-ceph-values.yaml
+      - values.yaml=rook-ceph-values.yaml
   - name: rook-ceph-cluster-values
     namespace: rook-ceph
     files:
