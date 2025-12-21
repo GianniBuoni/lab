@@ -40,7 +40,7 @@ cephClusterSpec:
             spec:
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 5Gi
               storageClassName: local-storage
               volumeMode: Block
               accessModes:
