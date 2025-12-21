@@ -19,3 +19,11 @@ spec:
   storageClassName: local-storage
   local:
     path: /dev/disk/by-partlabel/disk-disk1-nixos
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k3d-staging-server-0
