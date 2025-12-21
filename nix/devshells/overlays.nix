@@ -11,11 +11,27 @@ in {
     moduleWithSystem ({pkgs, ...}: {
       packages = with pkgs; [
         # local testing
-        k3d
+        minikube
       ];
       env = [
         (mkEnv "CLUSTER_BRANCH" "${clusterContext}")
         (mkSopAgeEnv "${clusterContext}")
+      ];
+      commands = [
+        {
+          name = "enterTest";
+          category = "tests";
+          help = "Tests developement environement for necessary packages";
+          command = ''
+            kubectl version --client=true
+            k version --client=true
+            helm version
+            flux version --client
+            minikube version
+            # must be installed on the host system
+            libvirtd -V
+          '';
+        }
       ];
     });
 }

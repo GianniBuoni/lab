@@ -3,14 +3,15 @@
   flake.aspects.devshells.base = moduleWithSystem ({pkgs, ...}: {
     packages = with pkgs; [
       # cluster tools
+      fluxcd
       k9s
+      kconf
+      kubeconform
       kubectl
       kubernetes-helm
-      fluxcd
 
       # extra utilities
       sops
-      age
       just
     ];
   });

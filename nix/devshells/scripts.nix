@@ -6,17 +6,6 @@
     '';
     commands = [
       {
-        name = "enterTest";
-        category = "tests";
-        help = "Tests dev environement for necessary packages";
-        command = ''
-          kubectl version --client=true
-          k version --client=true
-          helm version
-          flux version --client
-        '';
-      }
-      {
         name = "fgg";
         category = "aliases";
         help = "Alias for `flux get kustomizations`";
