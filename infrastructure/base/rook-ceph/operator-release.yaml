@@ -16,4 +16,6 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  valuesFrom: []
+  valuesFrom:
+    - kind: ConfigMap
+      name: rook-ceph-values

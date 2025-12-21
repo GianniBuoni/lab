@@ -23,8 +23,6 @@ cephClusterSpec:
   dashboard:
     enabled: true
     ssl: false
-  crashCollector:
-    disable: true
 
   storage:
     useAllNodes: false
