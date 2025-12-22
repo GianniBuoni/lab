@@ -21,7 +21,7 @@ start:
     minikube start \
     -p $CLUSTER_BRANCH \
     --driver=kvm2 \
-    --disk-size=5g \
+    --disk-size=10g \
     --extra-disks=3
 
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
