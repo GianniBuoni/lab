@@ -17,6 +17,20 @@
         help = "Alias for `kubectl <ARGS>`";
         command = "kubectl $@";
       }
+      {
+        name = "enterTest";
+        category = "tests";
+        help = "Tests developement environement for necessary packages";
+        command = ''
+          kubectl version --client=true
+          k version --client=true
+          helm version
+          flux version --client
+          minikube version
+          # must be installed on the host system
+          libvirtd -V
+        '';
+      }
     ];
   };
 }

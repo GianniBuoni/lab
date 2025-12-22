@@ -4,6 +4,7 @@
     packages = with pkgs; [
       # cluster tools
       fluxcd
+      minikube
       k9s
       kconf
       kubeconform

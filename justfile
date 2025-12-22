@@ -16,8 +16,12 @@ bootstrap DEPLOY_KEY_PATH: secrets
     --branch=main \
     --path="clusters/$CLUSTER_BRANCH"
 
-# create new testing cluster via k3d
+# start up new testing/staiging cluster via minikube
 start:
+    minikube start -p $CLUSTER_BRANCH
+
+# create new testing/staging cluster via minikube
+create:
     minikube start \
     -p $CLUSTER_BRANCH \
     --driver=kvm2 \
