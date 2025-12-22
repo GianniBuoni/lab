@@ -1,10 +1,11 @@
-# cluster spec made for a k3d environment running on a development machine
+# cluster spec made for a minikube environment running on a vm
 # cluster consists of:
 #
 # - CephFS
 # - Block storage pool
 #
-# Each is backed by pvcs using a local-storage storage class.
+# Minikube had 4 disks "attached" to it: ^sd[a-d].
+# ^sd[b-d] are made available to rook-ceph
 cephClusterSpec:
   cephVersion:
     image: quay.io/ceph/ceph:v19.2.3
@@ -25,26 +26,10 @@ cephClusterSpec:
     ssl: false
 
   storage:
-    useAllNodes: false
+    useAllNodes: true
     useAllDevices: false
-    storageClassDeviceSets:
-      - name: rook-ceph-device-set
-        count: 3
-        portable: false
-        tuneDeviceClass: true
-        tuneFastDeviceClass: false
-        encrypted: false
-        volumeClaimTemplates:
-          - metadata:
-            name: ceph-data
-            spec:
-              resources:
-                requests:
-                  storage: 5Gi
-              storageClassName: local-storage
-              volumeMode: Block
-              accessModes:
-                - ReadWriteOnce
+    deviceFilter: ^sd[b-d]
+
 ingress:
   dashboard:
     host:
