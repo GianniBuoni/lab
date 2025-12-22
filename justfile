@@ -26,8 +26,10 @@ create:
     minikube start \
     -p $CLUSTER_BRANCH \
     --driver=kvm2 \
-    --disk-size=10g \
-    --extra-disks=3
+    --memory=16384 \
+    --cpus=8 \
+    --disk-size=20g \
+    --extra-disks=1
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system
