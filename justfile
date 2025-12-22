@@ -7,7 +7,9 @@ build KUSTOMIZATION KUSTOMIZE_FILE:
 
 rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
-
+# start up new testing/staiging cluster via minikube
+start:
+    minikube start -p $CLUSTER_BRANCH
 # creates a k3d testing cluster and bootstrap flux and sops onto current context
 bootstrap DEPLOY_KEY_PATH: secrets
     flux bootstrap git \
@@ -15,11 +17,6 @@ bootstrap DEPLOY_KEY_PATH: secrets
     --url={{FLUX_GIT_REPO}} \
     --branch=main \
     --path="clusters/$CLUSTER_BRANCH"
-
-# start up new testing/staiging cluster via minikube
-start:
-    minikube start -p $CLUSTER_BRANCH
-
 # create new testing/staging cluster via minikube
 create:
     minikube start \
@@ -29,7 +26,6 @@ create:
     --extra-disks=3
 
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
-
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system
