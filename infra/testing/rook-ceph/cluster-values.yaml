@@ -1,6 +1,11 @@
 toolbox:
   enabled: true
 
+# ingress:
+#   dashboard:
+#     host:
+#       name: dashboard.example.com
+
 cephClusterSpec:
   dataDirHostPath: /data/rook
   skipUpgradeChecks: false
@@ -17,54 +22,11 @@ cephClusterSpec:
     enabled: true
     ssl: false
 
-  crashCollector:
-    disable: false
-
-  logCollector:
-    enabled: true
-
-  # priority classes to apply to ceph resources
-  priorityClassNames:
-    mon: system-node-critical
-    osd: system-node-critical
-    mgr: system-cluster-critical
-
-# ingress:
-#   dashboard:
-#     host:
-#       name: dashboard.example.com
-
-  storage: # cluster level storage configuration and selection
+  storage:
     useAllNodes: true
     useAllDevices: true
 
-  healthCheck:
-    daemonHealth:
-      mon:
-        disabled: false
-        interval: 45s
-      osd:
-        disabled: false
-        interval: 60s
-      status:
-        disabled: false
-        interval: 60s
-    livenessProbe:
-      mon:
-        disabled: false
-      mgr:
-        disabled: false
-      osd:
-        disabled: false
-
-  cephConfig:
-    global:
-      osd_pool_default_size: "1"
-      mon_warn_on_pool_no_redundancy: "false"
-      bdev_flock_retry: "20"
-      bluefs_buffered_io: "false"
-      mon_data_avail_warn: "10"
-
+# repicas limited to 1 for all storge classes
 cephBlockPools:
   - name: ceph-blockpool
     spec:
