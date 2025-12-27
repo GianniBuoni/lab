@@ -2,7 +2,6 @@ apiVersion: ceph.rook.io/v1
 kind: CephNFS
 metadata:
   name: ceph-nfs
-  namespace: rook-ceph
 spec:
   server:
     active: 1
@@ -20,3 +19,18 @@ spec:
   replicated:
     size: 1
     requireSafeReplicaSize: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ceph-nfs-lb
+spec:
+  ports:
+    - name: nfs
+      port: 2049
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  selector:
+    app: ceph-nfs
+    ceph_nfs: test
+    instance: a
