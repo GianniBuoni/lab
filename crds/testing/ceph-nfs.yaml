@@ -1,0 +1,10 @@
+apiVersion: ceph.rook.io/v1
+kind: CephNFS
+metadata:
+  name: ceph-nfs
+  namespace: rook-ceph # namespace:cluster
+spec:
+  server:
+    active: 1
+    logLevel: NIV_DEBUG
+  security: {}
