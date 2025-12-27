@@ -1,7 +1,7 @@
 apiVersion: ceph.rook.io/v1
 kind: CephNFS
 metadata:
-  name: ceph-nfs
+  name: rook-ceph-nfs
 spec:
   server:
     active: 1
@@ -12,7 +12,6 @@ apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
   name: builtin-nfs
-  namespace: rook-ceph
 spec:
   name: .nfs
   failureDomain: osd
@@ -23,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ceph-nfs-lb
+  name: rook-ceph-nfs-lb
 spec:
   ports:
     - name: nfs
@@ -31,6 +30,6 @@ spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   selector:
-    app: ceph-nfs
+    app: rook-ceph-nfs
     ceph_nfs: test
     instance: a
