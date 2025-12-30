@@ -14,7 +14,7 @@ build KUSTOMIZATION KUSTOMIZE_FILE:
 rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
 
-# creates a k3d testing cluster and bootstrap flux and sops onto current context
+# bootstraps flux and sops onto current context
 bootstrap DEPLOY_KEY_PATH: secrets
     flux bootstrap git \
     --private-key-file={{DEPLOY_KEY_PATH}} \
@@ -30,6 +30,10 @@ create:
     --cpus=8 \
     --disk-size=20g \
     --extra-disks=1
+# create a new k3d cluster for quick testing
+create-testing:
+    k3d cluster create \
+    --image rancher/k3s:latest
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system

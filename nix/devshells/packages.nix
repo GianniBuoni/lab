@@ -5,6 +5,7 @@
       # cluster tools
       fluxcd
       minikube
+      k3d
       k9s
       kconf
       kubeconform
