@@ -32,7 +32,7 @@ create:
     --extra-disks=1
 # create a new k3d cluster for quick testing
 create-testing:
-    k3d cluster create \
+    k3d cluster create $CLUSTER_BRANCH \
     --image rancher/k3s:latest
 # adds inital sops secret for flux to use
 secrets:
