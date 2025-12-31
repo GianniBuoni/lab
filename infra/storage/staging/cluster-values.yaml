@@ -1,10 +1,13 @@
 toolbox:
   enabled: true
 
-# ingress:
-#   dashboard:
-#     host:
-#       name: dashboard.example.com
+dashboard:
+  ssl: false
+
+ingress:
+  dashboard:
+    host:
+      name: ceph.local
 
 cephClusterSpec:
   dataDirHostPath: /data/rook
