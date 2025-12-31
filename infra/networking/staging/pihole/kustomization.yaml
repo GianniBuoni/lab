@@ -7,8 +7,3 @@ configMapGenerator:
     namespace: pihole
     files:
       - values.yaml=pihole-values.yaml
-secretGenerator:
-  - name: pihole-secrets
-    namespace: pihole
-    files:
-      - values.yaml=pihole-secrets.enc.yaml
