@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: storage
+  name: infra
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: .infra/storage/staging/
+  path: .infra/monitoring/staging/
   prune: true
   sourceRef:
     kind: GitRepository
@@ -13,8 +13,10 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
-      name: rook-ceph-mds-ceph-filesystem-b
-      namespace: rook-ceph
+      name: metallb-controller
+      namespace: metallb-system
+  dependsOn:
+    - name: storage
   decryption:
     provider: sops
     secretRef:

@@ -5,10 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: ./crds/testing/
+  path: .crds/testing/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: infra

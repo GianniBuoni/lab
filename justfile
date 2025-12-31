@@ -33,7 +33,10 @@ create:
 # create a new k3d cluster for quick testing
 create-testing:
     k3d cluster create $CLUSTER_BRANCH \
-    --image rancher/k3s:latest
+    --no-lb \
+    --k3s-arg "--disable=traefik@server:*" \
+    --image rancher/k3s:latest \
+    --subnet 172.28.0.0/16
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system
