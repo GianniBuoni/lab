@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: .infra/storage/staging/
+  path: ./infra/storage/staging/
   prune: true
   sourceRef:
     kind: GitRepository
@@ -15,7 +15,3 @@ spec:
       kind: Deployment
       name: rook-ceph-mds-ceph-filesystem-b
       namespace: rook-ceph
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
