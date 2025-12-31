@@ -3,3 +3,7 @@ ingress:
   ingressClassName: nginx
   hosts:
     - pihole.local
+
+serviceDns:
+  type: LoadBalancer
+  loadBalancerClass: metallb
