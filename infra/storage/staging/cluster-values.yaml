@@ -8,6 +8,7 @@ ingress:
   dashboard:
     host:
       name: ceph.local
+    ingressClassName: nginx
 
 cephClusterSpec:
   dataDirHostPath: /data/rook
