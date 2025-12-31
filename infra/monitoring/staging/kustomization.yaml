@@ -6,7 +6,7 @@ configMapGenerator:
   - name: grafana-values
     namespace: monitoring
     files:
-      - vales.yaml=grafana-values.yaml
+      - values.yaml=grafana-values.yaml
 secretGenerator:
   - name: grafana-admin
     namespace: monitoring
