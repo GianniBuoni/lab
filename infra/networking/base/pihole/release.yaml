@@ -29,3 +29,8 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
+  valuesFrom:
+    - kind: ConfigMap
+      name: pihole-values
+    - kind: Secret
+      name: pihole-secrets

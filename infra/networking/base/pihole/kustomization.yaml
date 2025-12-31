@@ -3,3 +3,5 @@ kind: Kustomization
 namespace: pihole
 resources:
   - release.yaml
+configurations:
+  - kustomizeconfig.yaml
