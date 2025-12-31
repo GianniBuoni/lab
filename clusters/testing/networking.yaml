@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: .infra/networking/testing/
+  path: ./infra/networking/testing/
   prune: true
   sourceRef:
     kind: GitRepository
