@@ -2,11 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../base/
-patches:
-  - target:
-      kind: HelmRelease
-    patch: |-
-      - op: replace
-        path: /spec/values/grafana/ingress/hosts
-        value:
-          - grafana-staging.noodoodle.us
+configMapGenerator:
+  - name: grafana-values
+    namespace: monitoring
+    files:
+      - vales.yaml=grafana-values.yaml
+secretGenerator:
+  - name: grafana-admin
+    namespace: monitoring
+    files:
+      - values.yaml=grafana-admin.enc.yaml

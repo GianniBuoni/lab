@@ -32,9 +32,5 @@ spec:
   valuesFrom:
     - kind: Secret
       name: grafana-admin
-  values:
-    grafana:
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        hosts: []
+    - kind: ConfigMap
+      name: grafana-values
