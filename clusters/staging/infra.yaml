@@ -4,12 +4,17 @@ metadata:
   name: infra
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 5m0s
   path: ./infra/staging/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: metallb-controller
+      namespace: metallb-system
   dependsOn:
     - name: storage
   decryption:

@@ -4,7 +4,7 @@ metadata:
   name: storage
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 5m0s
   path: ./storage/staging/
   prune: true
   sourceRef:
@@ -13,7 +13,7 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
-      name: rook-ceph-mds-ceph-filesystem-a
+      name: rook-ceph-mds-ceph-filesystem-b
       namespace: rook-ceph
   decryption:
     provider: sops
