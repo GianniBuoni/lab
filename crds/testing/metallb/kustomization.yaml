@@ -5,7 +5,7 @@ resources:
 patches:
   - target:
       kind: IPAddressPool
-    patch:
+    patch: |-
       - op: replace
         path: /spec/addresses
         value:
