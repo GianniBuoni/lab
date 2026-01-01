@@ -65,6 +65,8 @@ cephBlockPools:
       replicated:
         size: 1
         requireSafeReplicaSize: false
+    storageClass:
+      enabled: false
 
 cephFileSystems:
   - name: ceph-filesystem
