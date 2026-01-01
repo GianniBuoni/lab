@@ -4,16 +4,11 @@ metadata:
   name: crds
   namespace: flux-system
 spec:
-  interval: 1m0s
-  path: ./crds/testing/
+  interval: 5m0s
+  path: ./jobs/crds-post/testing
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: networking
-  healthChecks:
-    - apiVersion: apps/1
-      kind: Deployment
-      name: rook-ceph-nfs-test-a
-      namespace: rook-ceph
+    - name: crds
