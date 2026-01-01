@@ -13,7 +13,7 @@ spec:
     name: flux-system
   url: ssh://git@github.com/GianniBuoni/lab.git
   ignore: |
-    /metallb-k3d
+    metallb-k3d/
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
