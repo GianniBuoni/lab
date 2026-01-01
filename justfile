@@ -6,10 +6,11 @@ start:
     minikube start -p $CLUSTER_BRANCH
 # requires that flux kustomization-file has the same name
 # as the system kustomization
-build KUSTOMIZATION KUSTOMIZE_FILE:
+build KUSTOMIZATION KUSTOMIZE_FILE *FLAGS:
     flux build kustomization {{KUSTOMIZATION}} \
     --kustomization-file="./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
-    --path={{KUSTOMIZE_FILE}}
+    --path={{KUSTOMIZE_FILE}} \
+    {{FLAGS}}
 
 rec KUSTOMIZATION:
     flux reconcile kustomization {{KUSTOMIZATION}} --with-source
