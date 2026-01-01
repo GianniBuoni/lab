@@ -10,6 +10,12 @@ ingress:
       name: ceph.local
     ingressClassName: nginx
 
+configOverride: |
+  [global]
+  mon_allow_pool_delete = true
+  osd_pool_default_size = 1
+  osd_pool_default_min_size = 1
+
 cephClusterSpec:
   dataDirHostPath: /data/rook
   skipUpgradeChecks: false
