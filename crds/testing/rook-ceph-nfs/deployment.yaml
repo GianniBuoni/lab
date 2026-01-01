@@ -1,7 +1,7 @@
 apiVersion: ceph.rook.io/v1
 kind: CephNFS
 metadata:
-  name: rook-ceph-nfs
+  name: test
 spec:
   server:
     active: 1
@@ -20,5 +20,5 @@ spec:
   externalTrafficPolicy: Local
   selector:
     app: rook-ceph-nfs
-    ceph_nfs: rook-ceph-nfs
+    ceph_nfs: test
     instance: a
