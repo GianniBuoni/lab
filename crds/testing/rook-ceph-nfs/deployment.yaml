@@ -29,7 +29,7 @@ metadata:
 spec:
   routes:
     - match: Host(`nfs.local`)
-  services:
-    - name: rook-ceph-nfs-test-a
-      port: 2049
-      nativeLB: true
+      services:
+        - name: rook-ceph-nfs-test-a
+          port: 2049
+          nativeLB: true
