@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: rook-ceph-nfs-export-job
+  name: rook-toolbox-job-template
   namespace: rook-ceph
 spec:
   template:
@@ -35,14 +35,7 @@ spec:
             - mountPath: /etc/ceph
               name: ceph-config
               readOnly: true
-          command:
-            - "bash"
-            - "-c"
-            - |
-              ceph mgr module enable rook
-              ceph mgr module enable nfs
-              ceph orch set backend rook
-              ceph nfs export create cephfs test /test ceph-filesystem
+          command: []
       volumes:
         - name: ceph-admin-secret
           secret:
