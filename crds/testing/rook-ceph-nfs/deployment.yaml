@@ -8,17 +8,28 @@ spec:
     logLevel: NIV_DEBUG
   security: {}
 ---
-apiVersion: v1
-kind: Service
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: rook-ceph-nfs-lb
+# spec:
+#   ports:
+#     - name: nfs
+#       port: 2049
+#   type: LoadBalancer
+#   externalTrafficPolicy: Local
+#   selector:
+#     app: rook-ceph-nfs
+#     ceph_nfs: test
+#     instance: a
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
 metadata:
-  name: rook-ceph-nfs-lb
+  name: rook-ceph-nfs-ingress-tcp
 spec:
-  ports:
-    - name: nfs
+  routes:
+    - match: Host(`nfs.local`)
+  services:
+    - name: rook-ceph-nfs-test-a
       port: 2049
-  type: LoadBalancer
-  externalTrafficPolicy: Local
-  selector:
-    app: rook-ceph-nfs
-    ceph_nfs: test
-    instance: a
+      nativeLB: true
