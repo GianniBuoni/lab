@@ -8,7 +8,7 @@ ingress:
   dashboard:
     host:
       name: ceph.local
-    ingressClassName: nginx
+    ingressClassName: traefik
 
 configOverride: |
   [global]
