@@ -19,11 +19,11 @@ spec:
   interval: 12h
   chart:
     spec:
-      chart: kube-prometheus-stack
+      chart: traefik
       version: 38.0.x
       sourceRef:
         kind: HelmRepository
-        name: prometheus-community
+        name: traefik
       interval: 12h
   valuesFrom:
     - kind: ConfigMap

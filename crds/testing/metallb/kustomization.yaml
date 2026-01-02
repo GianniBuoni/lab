@@ -3,10 +3,6 @@ kind: Kustomization
 resources:
   - ../../base/metallb/
 patches:
-  - target:
+  - path: minikube.yaml
+    target:
       kind: IPAddressPool
-    patch: |-
-      - op: replace
-        path: /spec/addresses
-        value:
-          - 192.168.39.10-192.168.39.30

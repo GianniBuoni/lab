@@ -21,7 +21,8 @@ bootstrap DEPLOY_KEY_PATH: secrets
     --private-key-file={{DEPLOY_KEY_PATH}} \
     --url={{FLUX_GIT_REPO}} \
     --branch={{GIT_BRANCH}} \
-    --path="clusters/$CLUSTER_BRANCH"
+    --path="clusters/$CLUSTER_BRANCH" \
+    --silent
 # create new testing/staging cluster via minikube
 create:
     minikube start \
