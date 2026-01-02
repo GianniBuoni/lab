@@ -28,7 +28,7 @@ metadata:
   name: rook-ceph-nfs-ingress-tcp
 spec:
   routes:
-    - match: Host(`nfs.local`)
+    - match: HostSNI(`nfs.local`)
       services:
         - name: rook-ceph-nfs-test-a
           port: 2049
