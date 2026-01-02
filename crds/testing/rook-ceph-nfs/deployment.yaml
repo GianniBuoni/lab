@@ -27,6 +27,8 @@ kind: IngressRouteTCP
 metadata:
   name: rook-ceph-nfs-ingress-tcp
 spec:
+  entryPoints:
+    - nfs
   routes:
     - match: HostSNI(`nfs.local`)
       services:

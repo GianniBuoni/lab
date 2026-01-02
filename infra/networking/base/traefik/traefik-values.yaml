@@ -12,3 +12,6 @@ gateway:
     web:
       namespacePolicy:
         from: All
+ports:
+  nfs:
+    port: 2049
