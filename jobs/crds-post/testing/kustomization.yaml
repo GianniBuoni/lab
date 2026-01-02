@@ -11,7 +11,7 @@ patches:
         value: rook-ceph-nfs-export-job
       - op: replace
         path: /spec/template/spec/containers/0/command
-        value: |
+        value:
           - "bash"
           - "-c"
           - |
