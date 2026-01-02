@@ -33,3 +33,5 @@ spec:
         - name: rook-ceph-nfs-test-a
           port: 2049
           nativeLB: true
+  tls:
+    passthrough: true
