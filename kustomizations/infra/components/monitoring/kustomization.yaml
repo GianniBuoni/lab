@@ -3,5 +3,5 @@ kind: Component
 patches:
   - target:
       kind: HelmRelease
-      namespace: pihole
-    path: pihole-secret.yaml
+      namespace: monitoring
+    path: grafana-secret.yaml

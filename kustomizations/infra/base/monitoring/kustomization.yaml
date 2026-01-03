@@ -4,4 +4,4 @@ namespace: monitoring
 resources:
   - release.yaml
 configurations:
-  - kustomizeconfig.yaml
+  - ../../../../templates/name-reference/kustomizeconfig.yaml

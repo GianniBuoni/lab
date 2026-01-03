@@ -16,7 +16,7 @@ kind: HelmRelease
 metadata:
   name: pihole
 spec:
-  interval: 12h
+  interval: 5m
   chart:
     spec:
       chart: pihole
@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: pihole
-      interval: 12h
+      interval: 24h
   install:
     crds: Create
   upgrade:
