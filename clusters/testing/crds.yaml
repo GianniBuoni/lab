@@ -15,5 +15,5 @@ spec:
   healthChecks:
     - apiVersion: apps/1
       kind: Deployment
-      name: rook-ceph-nfs-test-a
+      name: rook-ceph-nfs-share-a
       namespace: rook-ceph
