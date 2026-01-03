@@ -1,9 +1,0 @@
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  hosts:
-    - pihole.local
-
-serviceDns:
-  mixedService: true
-  type: LoadBalancer

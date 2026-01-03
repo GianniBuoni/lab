@@ -1,0 +1,3 @@
+serviceDns:
+  mixedService: true
+  type: LoadBalancer
