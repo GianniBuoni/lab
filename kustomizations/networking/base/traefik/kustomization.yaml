@@ -9,4 +9,5 @@ configMapGenerator:
     files:
       - values.yaml=traefik-values.yaml
 configurations:
-  - kustomizeconfig.yaml
+  - ../../../../templates/name-reference/kustomizeconfig.yaml
+

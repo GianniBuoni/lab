@@ -1,19 +1,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: crds
+  name: lb-address-pools
   namespace: flux-system
 spec:
-  interval: 1m0s
-  path: ./crds/testing/
+  interval: 1m
+  path: ./kustomizations/lb-address-pools/testing/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
     - name: networking
-  healthChecks:
-    - apiVersion: apps/1
-      kind: Deployment
-      name: rook-ceph-nfs-share-a
-      namespace: rook-ceph

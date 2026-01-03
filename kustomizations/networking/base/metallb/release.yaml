@@ -1,33 +1,30 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: traefik-gateway
+  name: metallb-system
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: traefik
+  name: metallb
 spec:
   interval: 24h
-  url: https://traefik.github.io/charts
+  url: https://metallb.github.io/metallb
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: traefik
+  name: metallb
 spec:
-  interval: 12h
+  interval: 5m
   chart:
     spec:
-      chart: traefik
-      version: 38.0.x
+      chart: metallb
+      version: 0.15.x
       sourceRef:
         kind: HelmRepository
-        name: traefik
-      interval: 12h
-  valuesFrom:
-    - kind: ConfigMap
-      name: traefik-values
+        name: metallb
+      interval: 24h
   install:
     crds: Create
   upgrade:

@@ -5,14 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: ./infra/networking/testing/
+  path: ./kustomizations/networking/testing/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: storage
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
