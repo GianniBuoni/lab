@@ -6,9 +6,9 @@ resources:
   # - ../base/dashboard-traefik
 patches:
   - target:
-      kind: HTTPRoute
-      name: grafana-http-route
+      kind: IngressRoute
+      name: grafana-ingress
     patch: |
       - op: replace
-        path: /spec/hostnames/0
-        value: grafana.local
+        path: /spec/routes/0/match
+        value: Host(`grafana.local`)
