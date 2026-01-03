@@ -23,10 +23,4 @@ spec:
       middlewares:
         - name: rook-ceph-nfs-ipallowlist
 ---
-apiVersion: traefik.io/v1alpha1
-kind: MiddlewareTCP
-metadata:
-  name: rook-ceph-nfs-ipallowlist
-spec:
-  ipAllowList:
-    sourceRange: []
+
