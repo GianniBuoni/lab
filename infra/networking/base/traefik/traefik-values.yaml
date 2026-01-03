@@ -14,4 +14,6 @@ gateway:
         from: All
 ports:
   nfs:
-    port: 2049
+    expose:
+      default: true
+    exposedPort: 2049
