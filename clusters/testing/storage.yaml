@@ -12,8 +12,3 @@ spec:
     name: flux-system
   dependsOn:
     - name: core
-  healthChecks:
-    - kind: Deployment
-      # switch to using selectors?
-      name: rook-ceph-mds-ceph-filesystem-b
-      namespace: rook-ceph
