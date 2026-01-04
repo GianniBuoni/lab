@@ -14,6 +14,7 @@
 
       # extra utilities
       sops
+      openssl
       just
     ];
   });
