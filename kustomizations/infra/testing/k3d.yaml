@@ -1,4 +1,0 @@
-- op: replace
-  path: /spec/addresses
-  value:
-    - 172.28.0.10-172.28.0.12

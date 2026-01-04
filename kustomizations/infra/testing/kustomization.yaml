@@ -6,7 +6,5 @@ resources:
   - ../base/monitoring
   - ../base/pihole
   - ../base/wireguard
-patches:
-  - path: k3d.yaml
-    target:
-      kind: IPAddressPool
+components:
+  - ../components/context-minikube

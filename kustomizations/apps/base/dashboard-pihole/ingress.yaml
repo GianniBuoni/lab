@@ -13,5 +13,3 @@ spec:
         - name: pihole-web
           namespace: pihole
           port: 80
-  tls:
-    secretName: tls-secret
