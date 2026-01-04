@@ -14,9 +14,19 @@ patches:
       kind: IngressRoute
     patch: |
       - op: add
+        path: /metadata/namespace
+        value: traefik-gateway
+      - op: add
         path: /spec/tls
         value:
           secretName: tls-secret
+  - target:
+      kind: IngressRoute
+      name: ceph-ingress
+    patch: |
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`ceph.dev.local`)
   - target:
       kind: IngressRoute
       name: grafana-ingress
