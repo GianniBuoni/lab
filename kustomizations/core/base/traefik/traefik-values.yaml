@@ -9,6 +9,10 @@ gateway:
       namespacePolicy:
         from: All
 ports:
+  web:
+    redirections:
+      entryPoint:
+        to: websecure
   nfs:
     port: 2049
     expose:
