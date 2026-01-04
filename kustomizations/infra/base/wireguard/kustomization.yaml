@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: wireguard
 resources:
   - deployment.yaml
+  - ingress.yaml
   - namespace.yaml
   - pvc.yaml
