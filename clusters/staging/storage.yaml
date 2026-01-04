@@ -4,14 +4,13 @@ metadata:
   name: storage
   namespace: flux-system
 spec:
-  interval: 5m0s
-  path: ./infra/storage/staging/
+  interval: 1m
+  path: ./kustomizations/storage/staging/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
+    - kind: Deployment
       name: rook-ceph-mds-ceph-filesystem-b
       namespace: rook-ceph
