@@ -23,6 +23,3 @@ spec:
         - name: wireguard-svc
           port: 51820
           nativeLB: true
-      middlewares:
-        - name: udp-ip-allowlist
-          namespace: traefik-gateway
