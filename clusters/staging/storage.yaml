@@ -12,5 +12,7 @@ spec:
     name: flux-system
   healthChecks:
     - kind: Deployment
-      name: rook-ceph-mds-ceph-filesystem-b
       namespace: rook-ceph
+      labelSelector:
+        app: rook-ceph-mds
+        mds: ceph-filesystem-b
