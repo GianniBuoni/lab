@@ -19,8 +19,7 @@ spec:
   entryPoints:
     - wireguard
   routes:
-    - match: HostSNI(`*`)
-      services:
+    - services:
         - name: wireguard-svc
           port: 51820
           nativeLB: true

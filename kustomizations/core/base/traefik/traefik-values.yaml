@@ -18,3 +18,8 @@ ports:
     expose:
       default: true
     exposedPort: 2049
+  wireguard:
+    port: 51820
+    expose:
+      default: true
+    exposedPort: 51820
