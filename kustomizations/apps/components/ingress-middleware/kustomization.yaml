@@ -6,8 +6,7 @@ patches:
       labelSelector: "ingress=local"
     patch: |
       - op: add
-        path: /spec/routes/0
+        path: /spec/routes/0/middlewares
         value:
-          middlewares:
-            - name: http-ip-allowlist
-              namespace: traefik-gateway
+          - name: http-ip-allowlist
+            namespace: traefik-gateway
