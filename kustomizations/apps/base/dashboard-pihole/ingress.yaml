@@ -8,17 +8,17 @@ spec:
   routes:
     - match: Host(`pihole.noodoodle.us`)
       middlewares:
-        - name: pihole-replacepath
+        # - name: pihole-replacepath
         - name: http-ip-allowlist
           namespace: traefik-gateway
       services:
         - name: pihole-web
           port: 80
 ---
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: pihole-replacepath
-spec:
-  replacePath:
-    path: "/admin"
+# apiVersion: traefik.io/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: pihole-replacepath
+# spec:
+#   replacePath:
+#     path: /admin
