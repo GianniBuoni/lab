@@ -20,6 +20,7 @@ ports:
     exposedPort: 2049
   wireguard:
     port: 51820
+    protocol: UDP
     expose:
       default: true
     exposedPort: 51820
