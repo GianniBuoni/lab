@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`grafana.noodoodle.us`)
-    services:
-    - name: kube-prometheus-stack-grafana
-      port: 80
+    - match: Host(`grafana.noodoodle.us`)
+      services:
+        - name: kube-prometheus-stack-grafana
+          port: 80

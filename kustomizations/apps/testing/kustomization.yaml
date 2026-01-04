@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../base/dashboard-grafana
-  # - ../base/dashboard-pihole
+  - ../base/dashboard-pihole
   - ../base/dashboard-traefik
 components:
   - ../components/ingress-middleware
@@ -21,3 +21,10 @@ patches:
       - op: replace
         path: /spec/routes/0/match
         value: Host(`traefik.local`)
+  - target:
+      kind: IngressRoute
+      name: pihole-ingress
+    patch: |
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`pihole.local`)
