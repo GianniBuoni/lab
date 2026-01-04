@@ -1,0 +1,21 @@
+configOverride: |
+  [global]
+  mon_allow_pool_delete = true
+  osd_pool_default_size = 1
+  osd_pool_default_min_size = 1
+
+cephClusterSpec:
+  dataDirHostPath: /data/rook
+  skipUpgradeChecks: false
+  mon:
+    count: 1
+    allowMultiplePerNode: true
+  mgr:
+    count: 1
+    allowMultiplePerNode: true
+  dashboard:
+    enabled: true
+    ssl: false
+  storage:
+    useAllNodes: true
+    useAllDevices: true

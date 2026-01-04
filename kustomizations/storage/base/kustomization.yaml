@@ -6,10 +6,5 @@ resources:
   - repo.yaml
   - operator-release.yaml
   - cluster-release.yaml
-configMapGenerator:
-  - name: rook-ceph-values
-    namespace: rook-ceph
-    files:
-      - values.yaml=rook-ceph-values.yaml
 configurations:
-  - kustomizeconfig.yaml
+  - ../../../templates/name-reference/kustomizeconfig.yaml

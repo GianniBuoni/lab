@@ -21,6 +21,5 @@ spec:
           port: 2049
           nativeLB: true
       middlewares:
-        - name: rook-ceph-nfs-ipallowlist
----
-
+        - name: tcp-ip-allowlist
+          namespace: traefik-gateway

@@ -16,6 +16,7 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  valuesFrom:
-    - kind: ConfigMap
-      name: rook-ceph-cluster-values
+  values:
+    toolbox:
+      enabled: true
+  valuesFrom: []
