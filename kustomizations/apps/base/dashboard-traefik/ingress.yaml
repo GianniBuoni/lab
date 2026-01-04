@@ -2,9 +2,11 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-ingress
+  labels:
+    ingress: local
 spec:
   routes:
-  - match: Host(`traefik.noodoodle.us`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+  - match: Host(`traefik.noodoodle.us`)
     services:
     - name: api@internal
       kind: TraefikService
