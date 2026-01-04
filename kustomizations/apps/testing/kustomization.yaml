@@ -3,7 +3,9 @@ kind: Kustomization
 resources:
   - ../base/dashboard-grafana
   # - ../base/dashboard-pihole
-  # - ../base/dashboard-traefik
+  - ../base/dashboard-traefik
+components:
+  - ../components/ingress-middleware
 patches:
   - target:
       kind: IngressRoute
@@ -12,3 +14,10 @@ patches:
       - op: replace
         path: /spec/routes/0/match
         value: Host(`grafana.local`)
+  - target:
+      kind: IngressRoute
+      name: traefik-ingress
+    patch: |
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`traefik.local`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))

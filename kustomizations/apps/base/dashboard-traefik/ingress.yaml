@@ -1,0 +1,12 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-ingress
+spec:
+  entryPoints:
+    - traefik
+  routes:
+  - match: Host(`traefik.noodoodle.us`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+    services:
+    - name: api@internal
+      kind: TraefikService
