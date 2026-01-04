@@ -3,10 +3,3 @@ kind: Kustomization
 resources:
   - ../base/metallb
   - ../base/traefik
-secretGenerator:
-  - name: tls-secret
-    type: kubernetes.io/tls
-    namespace: traefik-gateway
-    files:
-      - tls.crt=tls.enc.crt
-      - tls.key=tls.enc.key

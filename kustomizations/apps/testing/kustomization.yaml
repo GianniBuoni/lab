@@ -4,8 +4,17 @@ resources:
   - ../base/dashboard-grafana
   - ../base/dashboard-pihole
   - ../base/dashboard-traefik
+secretGenerator:
+  - name: tls-secret
+    type: kubernetes.io/tls
+    namespace: traefik-gateway
+    files:
+      - tls.crt=tls.enc.crt
+      - tls.key=tls.enc.key
 components:
   - ../components/ingress-middleware
+configurations:
+  - ../../../templates/tls-secret/kusomizeconfig.yaml
 patches:
   - target:
       kind: IngressRoute
@@ -13,18 +22,18 @@ patches:
     patch: |
       - op: replace
         path: /spec/routes/0/match
-        value: Host(`grafana.local`)
+        value: Host(`grafana.dev.local`)
   - target:
       kind: IngressRoute
       name: traefik-ingress
     patch: |
       - op: replace
         path: /spec/routes/0/match
-        value: Host(`traefik.local`)
+        value: Host(`traefik.dev.local`)
   - target:
       kind: IngressRoute
       name: pihole-ingress
     patch: |
       - op: replace
         path: /spec/routes/0/match
-        value: Host(`pihole.local`)
+        value: Host(`pihole.dev.local`)

@@ -6,9 +6,12 @@ metadata:
     ingress: local
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`grafana.noodoodle.us`)
       services:
         - name: kube-prometheus-stack-grafana
+          namespace: monitoring
           port: 80
+  tls:
+    secretName: tls-secret

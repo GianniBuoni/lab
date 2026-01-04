@@ -5,8 +5,12 @@ metadata:
   labels:
     ingress: local
 spec:
+  entryPoints:
+    - websecure
   routes:
   - match: Host(`traefik.noodoodle.us`)
     services:
     - name: api@internal
       kind: TraefikService
+  tls:
+    secretName: tls-secret

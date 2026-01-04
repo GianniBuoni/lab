@@ -6,9 +6,12 @@ metadata:
     ingress: local
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`pihole.noodoodle.us`)
       services:
         - name: pihole-web
+          namespace: pihole
           port: 80
+  tls:
+    secretName: tls-secret
