@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
   - ../base/metallb
   - ../base/traefik
+  - ../base/tailscale
+components:
+  - ../components/tailnet-patch
+  - ../components/tailnet-testing
+configurations:
+  - ../../../templates/name-reference/kustomizeconfig.yaml

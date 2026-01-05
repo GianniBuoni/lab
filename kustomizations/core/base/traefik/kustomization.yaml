@@ -8,6 +8,4 @@ configMapGenerator:
     namespace: traefik-gateway
     files:
       - values.yaml=traefik-values.yaml
-configurations:
-  - ../../../../templates/name-reference/kustomizeconfig.yaml
 
