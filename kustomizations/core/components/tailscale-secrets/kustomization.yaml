@@ -7,7 +7,7 @@ patches:
       namespace: tailscale
     patch: |
       - op: add
-        path: /spec/valuesFrom
+        path: /spec/valuesFrom/0
         value:
-          - kind: Secret
-            name: tailnet-credentials
+          kind: Secret
+          name: tailnet-credentials

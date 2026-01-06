@@ -5,8 +5,7 @@ resources:
   - ../base/traefik
   - ../base/tailscale
 components:
-  - ../components/tailnet-patch
-  - ../components/tailnet-testing
-  - ../components/tailnet-api-server
-configurations:
-  - ../../../templates/name-reference/kustomizeconfig.yaml
+  - ../components/tailscale-values-testing
+  - ../components/tailscale-secrets
+  - ../components/secrets-testing
+  - ../../components-common/configs-helm
