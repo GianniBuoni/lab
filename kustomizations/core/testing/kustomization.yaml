@@ -7,5 +7,6 @@ resources:
 components:
   - ../components/tailnet-patch
   - ../components/tailnet-testing
+  - ../components/tailnet-api-server
 configurations:
   - ../../../templates/name-reference/kustomizeconfig.yaml
