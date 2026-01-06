@@ -4,17 +4,15 @@ FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
 # start up new testing/staiging cluster via minikube
 start:
     minikube start -p $CLUSTER_BRANCH
-# requires that flux kustomization-file has the same name
-# as the system kustomization
-build KUSTOMIZATION KUSTOMIZE_FILE *FLAGS:
-    flux build kustomization {{KUSTOMIZATION}} \
-    --kustomization-file="./clusters/$CLUSTER_BRANCH/{{KUSTOMIZATION}}.yaml" \
-    --path={{KUSTOMIZE_FILE}} \
+# builds kustomization manifests for validation
+build KUSTOMIZATION *FLAGS:
+    kubectl kustomize ./kustomizations/{{KUSTOMIZATION}}/$CLUSTER_BRANCH \
     {{FLAGS}}
-
-rec KUSTOMIZATION:
-    flux reconcile kustomization {{KUSTOMIZATION}} --with-source
-
+# local testing cluster only: applies kustomization imperatively to cluster
+apply KUSTOMIZATION *FLAGS:
+    just build {{KUSTOMIZATION}}
+    kubectl apply -k ./kustomizations/{{KUSTOMIZATION}}/$CLUSTER_BRANCH \
+    {{FLAGS}}
 # bootstraps flux and sops onto current context
 bootstrap DEPLOY_KEY_PATH: secrets
     flux bootstrap git \
@@ -39,6 +37,7 @@ create-testing:
     --k3s-arg "--disable=traefik@server:*" \
     --image rancher/k3s:latest \
     --subnet 172.28.0.0/16
+    flux install
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system
