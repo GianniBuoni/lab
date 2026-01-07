@@ -8,5 +8,3 @@ configMapGenerator:
     namespace: pihole
     files:
       - values.yaml=pihole-values.yaml
-configurations:
-  - ../../../../templates/name-reference/kustomizeconfig.yaml

@@ -3,5 +3,3 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - release.yaml
-configurations:
-  - ../../../../templates/name-reference/kustomizeconfig.yaml
