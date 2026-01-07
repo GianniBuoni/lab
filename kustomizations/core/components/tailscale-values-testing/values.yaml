@@ -4,9 +4,6 @@ operatorConfig:
     - "tag:testing"
   hostname: "tailscale-operator-testing"
 
-proxyConfig:
-  defaultTags: "tag:k8s,tag:testing"
-
 apiServerProxyConfig:
   allowImpersonation: "true"
   mode: "true"
