@@ -1,6 +1,4 @@
 providers:
-  kubernetesGateway:
-    enabled: true
   kubernetesCRD:
     allowCrossNamespace: true
 gateway:
@@ -18,3 +16,6 @@ ports:
     expose:
       default: true
     exposedPort: 2049
+service:
+  spec:
+    loadBalancerClass: tailscale
