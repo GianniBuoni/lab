@@ -37,7 +37,6 @@ create-testing:
     --k3s-arg "--disable=traefik@server:*" \
     --image rancher/k3s:latest \
     --subnet 172.28.0.0/16
-    flux install
 # adds inital sops secret for flux to use
 secrets:
     kubectl create ns flux-system
