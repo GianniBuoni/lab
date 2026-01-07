@@ -7,9 +7,9 @@ spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: pihole-web
+      name: rook-ceph-mgr-dashboard
       port:
-        name: http
+        name: http-dashboard
   tls:
     - hosts:
         - pihole
