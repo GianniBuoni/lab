@@ -6,9 +6,4 @@ metadata:
 spec:
   entryPoints:
   - websecure
-  routes:
-  - match: Host(`pihole.ts.noodoodle.us`)
-    services:
-    - name: pihole-web
-      namespace: pihole
-      port: 80
+  routes: []

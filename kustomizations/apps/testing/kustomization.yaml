@@ -1,6 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../base/dashboard-ceph
+- ../base/dashboard-ingress
 components:
-  - ../components/dashboards-testing
+- ../../components-common/tls-secret-ref
+- ../components/secrets-testing
+- ../components/dashboard-pihole
+- ../components/dashboard-grafana
+- ../components/dashboard-ceph
+- ../components/dashboards-testing
