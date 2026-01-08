@@ -1,0 +1,12 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ceph-ingress
+  namespace: traefik-gateway
+spec:
+  routes:
+  - match: Host(`ceph.ts.noodoodle.us`)
+    services:
+    - name: rook-ceph-mgr-dashboard
+      namespace: rook-ceph
+      port: 7000

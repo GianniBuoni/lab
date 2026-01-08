@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: syncthing-ingress
+spec:
+  routes:
+  - match: Host(`syncthing.ts.noodoodle.us`)
+    services:
+    - name: syncthing-web
+      namespace: syncthing
+      port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing-web
+spec:
+  selector:
+    app: syncthing
+  ports:
+  - port: 80
+    targetPort: 8384

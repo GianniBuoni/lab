@@ -3,13 +3,29 @@ kind: Component
 patches:
 - target:
     kind: IngressRoute
+    name: ceph-ingress
   patch: |
     - op: replace
       path: /spec/routes/0/match
-      value: Host(`ceph.dev.local`)
+      value: Host(`ceph.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
+    name: grafana-ingress
+  patch: |
     - op: replace
-      path: /spec/routes/1/match
-      value: Host(`grafana.dev.local`)
+      path: /spec/routes/0/match
+      value: Host(`grafana.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
+    name: pihole-ingress
+  patch: |
     - op: replace
-      path: /spec/routes/2/match
-      value: Host(`pihole.dev.local`)
+      path: /spec/routes/0/match
+      value: Host(`pihole.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
+    name: syncthing-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`syncthing.dev.noodoodle.us`)
