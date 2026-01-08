@@ -1,3 +1,4 @@
 serviceDns:
   mixedService: true
   type: LoadBalancer
+  loadBalancerClass: tailscale

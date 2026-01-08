@@ -1,25 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 patches:
-  - target:
-      kind: Ingress
-      namespace: pihole
-    patch: |
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: pihole-testing
-  - target:
-      kind: Ingress
-      namespace: monitoring
-    patch: |
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: grafana-testing
-  - target:
-      kind: Ingress
-      namespace: rook-ceph
-    patch: |
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: ceph-testing
-          
+- target:
+    kind: IngressRoute
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`pihole.dev.local`)

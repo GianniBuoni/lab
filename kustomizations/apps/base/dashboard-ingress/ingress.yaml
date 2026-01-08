@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard-ingress
+  namespace: traefik-gateway
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`pihole.ts.noodoodle.us`)
+    services:
+    - name: pihole-web
+      namespace: pihole
+      port: 80
