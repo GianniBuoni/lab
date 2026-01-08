@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: syncthing
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: syncthing
+  name: syncthing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syncthing
+  template:
+    metadata:
+      labels:
+        app: syncthing
+    spec:
+      containers:
+      - image: lscr.io/linuxserver/syncthing:2.0.13
+        name: syncthing
+        securityContext:
+          privileged: false
+        ports:
+        - containerPort: 8384
+        - containerPort: 22000
+        - containerPort: 22000
+          protocol: UDP
+        - containerPort: 21027
+          protocol: UDP
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
