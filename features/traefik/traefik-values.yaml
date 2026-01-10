@@ -18,3 +18,4 @@ service:
   annotations:
     netbird.io/expose: "true"
     netbird.io/groups: "k8s-testing"
+    netbird.io/policy: "internal-ingress"
