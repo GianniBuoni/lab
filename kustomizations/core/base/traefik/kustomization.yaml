@@ -1,11 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: traefik-gateway
+namespace: ingress
 resources:
-  - release.yaml
+- release.yaml
 configMapGenerator:
-  - name: traefik-values
-    namespace: traefik-gateway
-    files:
-      - values.yaml=traefik-values.yaml
+- name: traefik-values
+  namespace: ingress
+  files:
+  - values.yaml=traefik-values.yaml
 
