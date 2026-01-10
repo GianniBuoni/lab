@@ -14,5 +14,4 @@ spec:
     - kind: Deployment
       namespace: rook-ceph
       labelSelector:
-        app: rook-ceph-mds
-        mds: ceph-filesystem-b
+        app: rook-ceph-rgw
