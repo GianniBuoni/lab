@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  router:
+    enabled: true
+  kubernetesAPI:
+    enabled: true
+    groups:
+    - k8s-testing
+
+cluster:
+  name: k8s-testing
