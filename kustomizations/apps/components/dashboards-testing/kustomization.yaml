@@ -29,3 +29,10 @@ patches:
     - op: replace
       path: /spec/routes/0/match
       value: Host(`syncthing.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
+    name: traefik-dashboard
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`traefik.dev.noodoodle.us`)
