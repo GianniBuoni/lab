@@ -11,6 +11,9 @@ spec:
   - name: websecure
     port: 443
     targetPort: websecure
+  - name: nfs
+    port: 2049
+    targetPort: nfs
   selector:
     app.kubernetes.io/name: traefik
   type: LoadBalancer
