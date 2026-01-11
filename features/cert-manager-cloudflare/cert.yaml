@@ -1,0 +1,26 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: cloudflare-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-key
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-noodoodle-cert
+spec:
+  secretName: wildcard-noodoodle-cert
+  dnsNames:
+  - "noodoodle.us"
+  - "*.noodoodle.us"
+  issuerRef:
+    name: cloudflare-issuer
+    kind: Issuer
