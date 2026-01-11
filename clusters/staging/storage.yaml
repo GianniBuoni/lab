@@ -11,7 +11,7 @@ spec:
     kind: GitRepository
     name: flux-system
   healthChecks:
-    - kind: Deployment
-      namespace: rook-ceph
-      labelSelector:
-        app: rook-ceph-rgw
+  - kind: Deployment
+    namespace: rook-ceph
+    labelSelector:
+      app: rook-ceph-rgw
