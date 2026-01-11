@@ -18,8 +18,8 @@ metadata:
 spec:
   interval: 5m
   dependsOn:
-  - name: netbird-operator
-    namespace: netbird
+  - name: tailscale-operator
+    namespace: tailscale
   chart:
     spec:
       chart: traefik
@@ -28,9 +28,7 @@ spec:
         kind: HelmRepository
         name: traefik
       interval: 24h
-  valuesFrom:
-    - kind: ConfigMap
-      name: traefik-values
+  valuesFrom: []
   install:
     crds: Create
   upgrade:

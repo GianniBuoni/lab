@@ -3,9 +3,4 @@ kind: Kustomization
 namespace: ingress
 resources:
 - release.yaml
-configMapGenerator:
-- name: traefik-values
-  namespace: ingress
-  files:
-  - values.yaml=traefik-values.yaml
 
