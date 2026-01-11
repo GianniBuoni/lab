@@ -4,7 +4,8 @@ resources:
 - ../../../features/monitoring-ingress
 - ../../../features/pihole-ingress
 - ../../../features/rook-ceph-ingress
-- ../../../features/traefik-dash-ingress
 - ../../../features/syncthing
+- ../../../features/traefik-dash-ingress
 components:
 - ../../../components/dashboards-testing
+- ../../../components/dashboards-tls

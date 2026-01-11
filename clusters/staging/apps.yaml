@@ -5,14 +5,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./kustomizations/apps/testing/
+  path: ./kustomizations/apps/staging/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: infra
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
+  - name: config
