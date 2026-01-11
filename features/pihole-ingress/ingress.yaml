@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: pihole-ingress
-  namespace: traefik-ingress
+  namespace: ingress
 spec:
   routes:
   - match: Host(`pihole.ts.noodoodle.us`)

@@ -20,6 +20,3 @@ spec:
         - name: rook-ceph-nfs-share-a
           port: 2049
           nativeLB: true
-      middlewares:
-        - name: tcp-ip-allowlist
-          namespace: traefik-gateway
