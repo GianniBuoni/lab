@@ -1,0 +1,10 @@
+operatorConfig:
+  defaultTags:
+    - "tag:k8s-operator"
+  hostname: "k8s-operator-testing"
+
+proxyConfig:
+  defaultTags: "tag:k8s,tag:staging"
+
+apiServerProxyConfig:
+  allowImpersonation: "true"
