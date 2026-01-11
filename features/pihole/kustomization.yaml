@@ -3,8 +3,3 @@ kind: Kustomization
 namespace: pihole
 resources:
   - release.yaml
-configMapGenerator:
-  - name: pihole-values
-    namespace: pihole
-    files:
-      - values.yaml=pihole-values.yaml
