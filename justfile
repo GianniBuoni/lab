@@ -42,3 +42,11 @@ secrets:
     cat $SOPS_AGE_KEY_FILE | kubectl create secret generic sops-age \
     --namespace=flux-system \
     --from-file=age.agekey=/dev/stdin
+# suspends staging cluster flux resources for cleanup
+suspend:
+    flux suspend kustomization config
+    flux suspend kustomization infra
+# removes tailscale resources
+cleanup-tailscale:
+    kubectl delete svc traefik-int -n ingress
+    kubectl delete svc pihole-dns -n pihole
