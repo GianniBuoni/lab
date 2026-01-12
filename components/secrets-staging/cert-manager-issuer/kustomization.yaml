@@ -4,8 +4,8 @@ kind: Component
 secretGenerator:
 - name: cloudflare-dns-token
   namespace: ingress
-  envs:
-  - cloudflare-dns-token.env.enc
+  files:
+  - cloudflare=cloudflare-dns-token.enc.yaml
 generatorOptions:
   disableNameSuffixHash: true
 
@@ -18,7 +18,7 @@ patches:
       path: /spec/acme/solvers/0/dns01/cloudflare/apiTokenSecretRef
       value:
         name: cloudflare-dns-token
-        key: api-token
+        key: cloudflare.apiToken
     - op: replace
       path: /spec/acme/server
       value: https://acme-staging-v02.api.letsencrypt.org/directory
