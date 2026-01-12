@@ -5,10 +5,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./kustomizations/jobs/testing
+  path: ./kustomizations/jobs/staging
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: apps
+  - name: apps
