@@ -13,5 +13,4 @@ spec:
   healthChecks:
   - kind: Deployment
     namespace: rook-ceph
-    labelSelector:
-      app: rook-ceph-rgw
+    name: rook-ceph-rgw-ceph-objectstore-a

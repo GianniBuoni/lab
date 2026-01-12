@@ -1,4 +1,3 @@
-GIT_BRANCH := if env("CLUSTER_BRANCH") == "prod" {"main"} else {env("CLUSTER_BRANCH")}
 FLUX_GIT_REPO := "ssh://git@github.com/GianniBuoni/lab.git"
 
 # start up new testing/staiging cluster via minikube
@@ -18,7 +17,7 @@ bootstrap DEPLOY_KEY_PATH: secrets
     flux bootstrap git \
     --private-key-file={{DEPLOY_KEY_PATH}} \
     --url={{FLUX_GIT_REPO}} \
-    --branch={{GIT_BRANCH}} \
+    --branch=main \
     --path="clusters/$CLUSTER_BRANCH" \
     --silent
 # create new testing/staging cluster via minikube
