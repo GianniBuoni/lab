@@ -6,3 +6,4 @@ resources:
 - ../../../features/sync-stack-syncthing
 components:
 - ../../../components/dashboards-testing
+- ../../../components/syncthing-storage
