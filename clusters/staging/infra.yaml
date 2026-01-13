@@ -11,8 +11,4 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-  - name: storage
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
+  - name: core

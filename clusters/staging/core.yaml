@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: storage
+  name: core
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./kustomizations/storage/staging/
+  path: ./kustomizations/core/staging/
   prune: true
   sourceRef:
     kind: GitRepository
