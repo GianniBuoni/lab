@@ -38,10 +38,8 @@ create-testing:
     --subnet 172.28.0.0/16
 # adds inital sops secret for flux to use
 secrets:
-    kubectl create ns flux-system
-    cat $SOPS_AGE_KEY_FILE | kubectl create secret generic sops-age \
-    --namespace=flux-system \
-    --from-file=age.agekey=/dev/stdin
+    kubectl -n kube-system create secret tls sealed-secrets-key --cert="$TLS_CRT_FILE" --key="$TLS_KEY_FILE"
+    kubectl -n kube-system label secret sealed-secrets-key sealedsecrets.bitnami.com/sealed-secrets-key=active
 # suspends staging cluster flux resources for cleanup
 suspend:
     flux suspend kustomization config
