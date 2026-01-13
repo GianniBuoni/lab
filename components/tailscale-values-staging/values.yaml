@@ -1,7 +1,7 @@
 operatorConfig:
   defaultTags:
     - "tag:k8s-operator"
-  hostname: "k8s-operator-testing"
+  hostname: "k8s-operator-staging"
 
 proxyConfig:
   defaultTags: "tag:k8s,tag:staging"
