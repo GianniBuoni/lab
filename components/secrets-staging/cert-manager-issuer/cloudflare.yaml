@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: cloudflare-dns
+  namespace: ingress
+spec:
+  encryptedData:
+    api-token: AgBAHZlLZFDcN+wUWqQ4hkl6kZAsi/exK4R6y7n1Y/YiKuyzI8g6Bw6AZUYEIGP5+NnD6ttjcSqeOH1t2Ulue41CKYwb3c2BVZaI2VLyun6rRbIqIoM0P7/DhcwlO0gxKMUVfnOfd57MzUFkoOPDLeuN9wtkiuUxyJ8fQz7sOydn9CqWvwRFXxVlhuzZH3eHgD4ugzjUJZtJm5rpSCOY0uBZg773d8o3zPSICoRdcy9ZDXVxnw4pUiCofyqoR/udp9PO49daMiVzibDBSsupzNXN49E7ITs8QBV0I9/v9o0kNZHS7+3b70M8OKFzTSst8WunDpH2WWNEBS1a3mgZfUPzsccfz+/ja8TwwOZiepZ4unemvu6+bkkbmTaiDpFx3GenOjZelmSLHNDVWWZFw+k/gJ1uaID7jniZ1c5elf5apXInXlcCHMn33qdDaWJcA9QpZpeTeg26ndLLiSgcqDV+yD45rEb4wEnzX6UIUJHkPvu+DhxCN6rPCiKkuavoND/NO+UAHPD5XZNHysK4saZqUbVTk2xogFItVL64y5JTOKyUK8PJUfdUv4kKMm2wm+GwaiNb6yTcUUrTp8V+74vkoCJasRwgQrN76qpXZsSI9r4iKdGVP2B1064bdFDrkm4CEWF8hLyDZpR7mLwSueVn5JISGdSZp5usK2TFDtKznrWcdoKUljh/adB2YcgB9dj/vAIZDNqxl+GlXmt/uxtFqLZe+G+diQHeAakGmAmuv9DJjlYgm/VW
+  template:
+    metadata:
+      name: cloudflare-dns
+      namespace: ingress

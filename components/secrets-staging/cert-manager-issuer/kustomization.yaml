@@ -1,13 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
-secretGenerator:
-- name: cloudflare-dns-token
-  namespace: ingress
-  files:
-  - cloudflare=cloudflare-dns-token.enc.yaml
-generatorOptions:
-  disableNameSuffixHash: true
+resources:
+- cloudflare.yaml
 
 patches:
 - target:
@@ -17,8 +12,8 @@ patches:
     - op: add
       path: /spec/acme/solvers/0/dns01/cloudflare/apiTokenSecretRef
       value:
-        name: cloudflare-dns-token
-        key: cloudflare.apiToken
+        name: cloudflare-dns
+        key: api-token
     - op: replace
       path: /spec/acme/server
       value: https://acme-staging-v02.api.letsencrypt.org/directory
