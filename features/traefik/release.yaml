@@ -17,9 +17,6 @@ metadata:
   name: traefik
 spec:
   interval: 5m
-  dependsOn:
-  - name: tailscale-operator
-    namespace: tailscale
   chart:
     spec:
       chart: traefik
