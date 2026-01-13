@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+configMapGenerator:
+- name: rook-ceph-values
+  namespace: rook-ceph
+  files:
+  - values.yaml=values.yaml
+
+patches:
+- target:
+    kind: HelmRelease
+    name: rook-ceph
+  patch: |
+    - op: add
+      path: /spec/valuesFrom
+      value:
+      - kind: ConfigMap
+        name: rook-ceph-values
