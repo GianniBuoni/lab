@@ -8,8 +8,5 @@
 # env
 .env
 
-# age
-age.agekey
-
-# testing secrets
-**/secrets-testing
+# raw secrets dir
+**/secrets-raw

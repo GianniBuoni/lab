@@ -11,6 +11,7 @@
       kubeconform
       kubectl
       kubernetes-helm
+      kubeseal
 
       # extra utilities
       sops
