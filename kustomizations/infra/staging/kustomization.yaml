@@ -5,6 +5,7 @@ resources:
 - ../../../features/metallb
 - ../../../features/monitoring
 - ../../../features/pihole
+- ../../../features/secrets
 - ../../../features/tailscale
 - ../../../features/traefik
 components:
