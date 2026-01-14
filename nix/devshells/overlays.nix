@@ -1,7 +1,7 @@
 {moduleWithSystem, ...}: let
   mkEnv = name: value: {inherit name value;};
 
-  baseTlsPath = "/run/secrets/cluster-secrets";
+  baseTlsPath = "/run/secrets";
 
   mkTls = name: extension: cluster: {
     inherit name;
