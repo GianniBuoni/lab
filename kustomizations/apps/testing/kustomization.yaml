@@ -7,4 +7,5 @@ components:
 - ../../../components/secrets-testing/palworld
 - ../../../components/palworld-server-values
 - ../../../components/palworld-gameplay-values
+- ../../../components/palworld-cephfs-backups
 - ../../../components/palworld-tailscale-lb
