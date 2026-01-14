@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+- palworld.yaml
+
+patches:
+- target:
+    kind: StatefulSet
+    name: palworld-server
+  patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/env
+      value:
+      - name: ADMIN_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: palworld-secrets
+            key: adminPassword
+      - name: SERVER_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: palworld-secrets
+            key: serverPassword

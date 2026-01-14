@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: palworld-server
+spec:
+  serviceName: palworld-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: palworld-server
+  template:
+    metadata:
+      labels:
+        app: palworld-server
+    spec:
+      containers:
+      - name: palworld-server
+        image: thijsvanloef/palworld-server-docker:v2.3.0
+        ports:
+        - name: server
+          containerPort: 8211
+          protocol: UDP
+        - name: query
+          containerPort: 27015
+          protocol: UDP
+        envFrom: []
+        env: []
+        volumeMounts:
+        - name: datadir
+          mountPath: /palworld
+        startupProbe:
+          exec:
+            command: ["sh", "-c", "pgrep PalServer-Linux >/dev/null"]
+          failureThreshold: 120
+          periodSeconds: 5
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "pgrep PalServer-Linux >/dev/null"]
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "pgrep PalServer-Linux >/dev/null"]
+          periodSeconds: 20
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: palworld-pvc
