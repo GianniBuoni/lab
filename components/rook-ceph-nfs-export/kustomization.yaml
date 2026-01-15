@@ -17,4 +17,4 @@ patches:
             ceph mgr module enable rook
             ceph mgr module enable nfs
             ceph orch set backend rook
-            ceph nfs export create cephfs share /test ceph-filesystem
+            ceph nfs export create cephfs share /root ceph-filesystem

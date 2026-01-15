@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - ../../../features/rook-ceph-toolbox
 components:
-- ../../../components/rook-ceph-nfs-export-testing
+- ../../../components/rook-ceph-nfs-export
