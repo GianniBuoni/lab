@@ -10,3 +10,4 @@ components:
 - ../../../components/palworld-server-values
 - ../../../components/palworld-gameplay-values
 - ../../../components/palworld-cephfs-backups
+- ../../../components/palworld-rbd-storage

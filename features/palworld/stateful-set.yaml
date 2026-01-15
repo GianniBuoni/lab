@@ -25,9 +25,7 @@ spec:
           protocol: UDP
         envFrom: []
         env: []
-        volumeMounts:
-        - name: datadir
-          mountPath: /palworld
+        volumeMounts: []
         startupProbe:
           exec:
             command: ["sh", "-c", "pgrep PalServer-Linux >/dev/null"]
@@ -41,7 +39,4 @@ spec:
           exec:
             command: ["sh", "-c", "pgrep PalServer-Linux >/dev/null"]
           periodSeconds: 20
-      volumes:
-      - name: datadir
-        persistentVolumeClaim:
-          claimName: palworld-pvc
+      volumes: []

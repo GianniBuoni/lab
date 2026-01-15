@@ -3,6 +3,5 @@ kind: Kustomization
 namespace: palworld
 resources:
 - namespace.yaml
-- pvc.yaml
 - stateful-set.yaml
 - svc.yaml

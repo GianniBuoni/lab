@@ -4,6 +4,7 @@ metadata:
   labels:
     app: palworld-server
   name: palworld-pvc
+  namespace: palworld
 spec:
   accessModes:
   - ReadWriteOnce
