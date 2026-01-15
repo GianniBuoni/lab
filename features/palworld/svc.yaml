@@ -17,3 +17,15 @@ spec:
   selector:
     app: palworld-server
 ---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: palworld-ingress
+spec:
+  entryPoints:
+  - pals
+  routes:
+  - services:
+    - name: palworld-svc
+      port: 8211
+      nativeLB: true
