@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-web
+spec:
+  ports:
+  - name: web
+    port: 80
+    targetPort: web
+  selector:
+    app: home-assistant
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant-ingress
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`home.ts.noodoodle.us`)
+    services:
+    - name: home-assistant-web
+      namespace: home-assistant
+      port: 80

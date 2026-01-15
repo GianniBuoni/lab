@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../../features/palworld
 - ../../../features/traefik-dash-ingress
+- ../../../features/home-assistant
 components:
 - ../../../components/dashboards-testing
 - ../../../components/secrets-testing/palworld

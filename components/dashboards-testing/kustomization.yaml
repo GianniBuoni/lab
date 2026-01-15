@@ -17,6 +17,13 @@ patches:
       value: Host(`grafana.dev.noodoodle.us`)
 - target:
     kind: IngressRoute
+    name: home-assistant-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`home.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
     name: pihole-ingress
   patch: |
     - op: replace
