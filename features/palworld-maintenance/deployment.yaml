@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: palworld-maintenance
+  name: palworld-maintenance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: palworld-maintenance
+  template:
+    metadata:
+      labels:
+        app: palworld-maintenance
+    spec:
+      containers:
+      - image: busybox:latest
+        name: busybox
+        command:
+        - /bin/sh
+        args:
+        - "-c"
+        - "sleep 3600"
+        volumeMounts:
+        - name: datadir
+          mountPath: /palworld
+        - name: backupdir
+          mountPath: /palworld/backups
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: palworld-pvc
+      - name: backupdir
+        persistentVolumeClaim:
+          claimName: palworld-backup-pvc
