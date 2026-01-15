@@ -4,6 +4,8 @@ metadata:
   name: grafana-ingress
   namespace: ingress
 spec:
+  entryPoints:
+  - websecure
   routes:
   - match: Host(`grafana.ts.noodoodle us`)
     services:

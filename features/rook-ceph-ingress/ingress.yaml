@@ -4,6 +4,8 @@ metadata:
   name: ceph-ingress
   namespace: ingress
 spec:
+  entryPoints:
+  - websecure
   routes:
   - match: Host(`ceph.ts.noodoodle.us`)
     services:

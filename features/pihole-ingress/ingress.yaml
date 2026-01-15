@@ -4,6 +4,8 @@ metadata:
   name: pihole-ingress
   namespace: ingress
 spec:
+  entryPoints:
+  - websecure
   routes:
   - match: Host(`pihole.ts.noodoodle.us`)
     services:

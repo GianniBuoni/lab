@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: syncthing-ingress
 spec:
+  entryPoints:
+  - websecure
   routes:
   - match: Host(`syncthing.ts.noodoodle.us`)
     services:
