@@ -7,6 +7,9 @@ configMapGenerator:
   files:
   - values.yaml=values.yaml
 
+generatorOptions:
+  diableNameSuffixHash: true
+
 patches:
 - target:
     kind: HelmRelease
