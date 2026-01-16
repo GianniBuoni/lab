@@ -7,7 +7,6 @@ resources:
 components:
 - ../../../components/dashboards-testing
 - ../../../components/secrets-testing/palworld
-- ../../../components/palworld-server-values
-- ../../../components/palworld-gameplay-values
+- ../../../components/palworld-values
 - ../../../components/palworld-cephfs-backups
 - ../../../components/palworld-rbd-storage
