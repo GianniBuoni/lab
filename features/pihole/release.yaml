@@ -15,6 +15,8 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: pihole
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   interval: 5m
   chart:
@@ -29,6 +31,4 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  valuesFrom:
-    - kind: ConfigMap
-      name: pihole-values
+  valuesFrom: []

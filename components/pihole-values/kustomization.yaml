@@ -6,3 +6,17 @@ configMapGenerator:
     namespace: pihole
     files:
       - values.yaml=values.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+
+patches:
+- target:
+    kind: HelmRelease
+    name: pihole
+    namespace: pihole
+  patch: |
+    - op: add
+      path: /spec/valuesFrom/0
+      value:
+        kind: ConfigMap
+        name: pihole-values

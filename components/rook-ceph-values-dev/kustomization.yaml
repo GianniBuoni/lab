@@ -19,6 +19,9 @@ configMapGenerator:
   files:
   - values.yaml=rook-ceph-cluster-fs.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 patches:
   - target:
       kind: HelmRelease

@@ -10,4 +10,3 @@ components:
 - ../../../components/traefik-values-tailscale
 - ../../../components/tailscale-values-dev
 - ../../../components/secrets-testing/tailscale-auth
-- ../../../components/namerefs-helm
