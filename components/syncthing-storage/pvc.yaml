@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sync-stack-pvc
+  name: syncthing-pvc
+  namespace: syncthing
 spec:
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  storageClassName: ceph-filesystem
-  volumeMode: Filesystem

@@ -9,7 +9,7 @@ spec:
   - match: Host(`syncthing.ts.noodoodle.us`)
     services:
     - name: syncthing-web
-      namespace: sync-stack
+      namespace: syncthing
       port: 80
 ---
 apiVersion: v1

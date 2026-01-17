@@ -1,12 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- ../../../features/home-assistant
 - ../../../features/palworld
 - ../../../features/traefik-dash-ingress
-- ../../../features/home-assistant
+- ../../../features/syncthing
 components:
 - ../../../components/dashboards-testing
 - ../../../components/secrets-testing/palworld
 - ../../../components/palworld-values
 - ../../../components/palworld-cephfs-backups
 - ../../../components/palworld-rbd-storage
+- ../../../components/syncthing-storage
