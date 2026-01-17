@@ -14,6 +14,7 @@ spec:
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
+      ttlSecondsAfterFinished: 180
       template:
         spec:
           restartPolicy: Never
