@@ -25,7 +25,7 @@ spec:
             add: ["NET_ADMIN"]
         envFrom: []
       containers:
-      - image: lscr.io/linuxserver/deluge:2.2.0
+      - image: lscr.io/linuxserver/deluge:2.2.0@sha256:8e0d495f10f2ee29919f229ae0b32d92f2b7a5d5339fc6f171f19f3f94b9ed56
         name: deluge
         ports:
         - name: http
