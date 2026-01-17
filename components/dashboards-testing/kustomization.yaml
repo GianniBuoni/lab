@@ -10,6 +10,13 @@ patches:
       value: Host(`ceph.dev.noodoodle.us`)
 - target:
     kind: IngressRoute
+    name: deluge-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`deluge.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
     name: grafana-ingress
   patch: |
     - op: replace

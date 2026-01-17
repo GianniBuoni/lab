@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deluge
+  name: deluge
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deluge
+  template:
+    metadata:
+      labels:
+        app: deluge
+    spec:
+      initContainers:
+      - image: qmcgaw/gluetun:v3.41.0
+        name: gluetun
+        restartPolicy: Always
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        envFrom: []
+      containers:
+      - image: lscr.io/linuxserver/deluge:2.2.0
+        name: deluge
+        ports:
+        - name: http
+          containerPort: 8112
+        - containerPort: 6881
+        - containerPort: 6881
+          protocol: UDP
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        volumeMounts:
+        - name: configdir
+          mountPath: /config
+      volumes:
+      - name: configdir
+        persistentVolumeClaim:
+          claimName: deluge-config-pvc
