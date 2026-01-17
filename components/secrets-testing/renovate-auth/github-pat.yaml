@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: renovate-github-pat
+  namespace: renovate
+spec:
+  encryptedData:
+    RENOVATE_TOKEN: AgAOqwYceD4xxLUgGBCcSN+E/OosttlFL3i8F+u5TKkGSQf4kLEnf1+B0DsLclE5YvQjnuaFyht1IE4E+AjwTobUrXWD1X/cE83c/6W97ua/2yj+EICVp24LSdo3HTkntewZZSfekTV8PflZQypaGBhzJBlHfxFyvS5E4Ig8KNB8O6EHBEwkyFyC43fqpruP7VP7hCXxOgC+eHmdElrQ+59KWT8R+zfv0i4ItQBp1hWhFNzNBuptQvKPmPJUXuRU6MjWl6iFTxd1XABK/51oXYhwEvPpHpWXjWagfuGlNf9RslLT3+CUvcPpekuBl40z9dcAp+9hCMbUPd0SSoPP1x8xHsmcSvnEOduLopHywVvotZfcFIJu+BVq34klJTRwvUu2TtW6u6HyBxDYFh+Dqr/5yVWuQMWveRTUAkYQoFoWbQVIX+JOD+kDs9BZ3Q7ajKpLFGUc+aZl/XZ4mqSBZUZ2ahYNBIpm2948Y/tO/Sy2wo3kZTordh7oBTRcO0dNCkMv3iKSL6WPvn4LifRuCaIyNe9wyS9ct8ypwxRYMP40HwT9IoXaaL1WRCWoCtjxImaduS826zwyTk+CsF070L0lFJb5nROldnTUVYxKN9BzN4fXOPwOuquJBkYnsUJ+Ueik3/RoeDxhDEWrcjtIq/O/frQr4KkiPl4+2YGtlmXACsyXEvW0+SGJGxhEKdDrJ2MdUdJhiHFFUoJshRgAYsm5c+z43EAKdjG4ScgCqKlo2sekjsskESqOv/hgVFP8f+KXa/lbE6o8UXeuVzZ4MM9jzTixL8vMdsri0fxIhtr8gh5b3LKxt0Ok+/KRbio=
+  template:
+    metadata:
+      name: renovate-github-pat
+      namespace: renovate
