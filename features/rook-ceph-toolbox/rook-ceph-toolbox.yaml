@@ -4,6 +4,7 @@ metadata:
   name: rook-toolbox-job-template
   namespace: rook-ceph
 spec:
+  ttlSecondsAfterFinished: 180
   template:
     spec:
       initContainers:
