@@ -9,6 +9,8 @@ metadata:
   labels:
     app: home-assistant
   name: home-assistant
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -47,4 +49,4 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 512Mi
+      storage: 64Mi

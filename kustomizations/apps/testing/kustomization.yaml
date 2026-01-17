@@ -9,6 +9,7 @@ resources:
 - ../../../features/syncthing
 components:
 - ../../../components/dashboards-testing
+- ../../../components/home-assistant-config
 - ../../../components/secrets-testing/palworld
 - ../../../components/secrets-testing/deluge
 - ../../../components/palworld-values
