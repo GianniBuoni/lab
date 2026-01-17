@@ -15,7 +15,7 @@ spec:
         app: palworld-maintenance
     spec:
       containers:
-      - image: busybox:latest
+      - image: busybox:latest@sha256:2383baad1860bbe9d8a7a843775048fd07d8afe292b94bd876df64a69aae7cb1
         name: busybox
         command:
         - /bin/sh
