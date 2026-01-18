@@ -24,6 +24,19 @@ spec:
           capabilities:
             add: ["NET_ADMIN"]
         envFrom: []
+      - image: busybox:latest@sha256:2383baad1860bbe9d8a7a843775048fd07d8afe292b94bd876df64a69aae7cb1
+        name: deluge-data-init
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          mkdir -p /data/deluge/completed
+          mkdir -p /data/deluge/incomplete
+          mkdir -p /data/deluge/torrents
+          chown 1000 -R /data/deluge
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
       containers:
       - image: lscr.io/linuxserver/deluge:2.2.0@sha256:8e0d495f10f2ee29919f229ae0b32d92f2b7a5d5339fc6f171f19f3f94b9ed56
         name: deluge
@@ -41,7 +54,13 @@ spec:
         volumeMounts:
         - name: configdir
           mountPath: /config
+        - name: datadir
+          subPath: deluge
+          mountPath: /data
       volumes:
       - name: configdir
         persistentVolumeClaim:
           claimName: deluge-config-pvc
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: media-stack-pvc

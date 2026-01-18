@@ -5,15 +5,8 @@ resources:
 - ../../../features/home-assistant
 - ../../../features/jellyfin
 - ../../../features/media-stack
-- ../../../features/palworld
 - ../../../features/traefik-dash-ingress
-- ../../../features/syncthing
 components:
 - ../../../components/dashboards-testing
 - ../../../components/home-assistant-config
-- ../../../components/secrets-testing/palworld
 - ../../../components/secrets-testing/deluge
-- ../../../components/palworld-values
-- ../../../components/palworld-cephfs-backups
-- ../../../components/palworld-rbd-storage
-- ../../../components/syncthing-storage
