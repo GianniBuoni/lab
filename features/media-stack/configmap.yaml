@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: linux-server-io-env
 data:
-  PID: "1000"
-  GID: "1000"
+  PUID: "1000"
+  PGID: "1000"
   TZ: America/New_York
