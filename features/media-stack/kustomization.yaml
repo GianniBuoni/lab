@@ -5,3 +5,11 @@ resources:
 - namespace.yaml
 - pvc.yaml
 - configmap.yaml
+- svc.yaml
+- ingress.yaml
+# deployments
+- bazarr.yaml
+- flaresolverr.yaml
+- prowlarr.yaml
+- radarr.yaml
+- sonarr.yaml

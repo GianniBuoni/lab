@@ -38,6 +38,22 @@ patches:
       value: Host(`jellyfin.dev.noodoodle.us`)
 - target:
     kind: IngressRoute
+    name: media-stack-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`bazarr.dev.noodoodle.us`)
+    - op: replace
+      path: /spec/routes/1/match
+      value: Host(`prowlarr.dev.noodoodle.us`)
+    - op: replace
+      path: /spec/routes/2/match
+      value: Host(`radarr.dev.noodoodle.us`)
+    - op: replace
+      path: /spec/routes/3/match
+      value: Host(`sonarr.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
     name: pihole-ingress
   patch: |
     - op: replace

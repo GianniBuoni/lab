@@ -7,7 +7,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`traefik.nb.noodoodle.us`)
+  - match: Host(`traefik.ts.noodoodle.us`)
     services:
     - name: api@internal
       kind: TraefikService

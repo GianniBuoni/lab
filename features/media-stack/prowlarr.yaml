@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: prowlarr
+  name: prowlarr
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prowlarr
+  template:
+    metadata:
+      labels:
+        app: prowlarr
+    spec:
+      containers:
+      - image: lscr.io/linuxserver/prowlarr:2.3.2-nightly@sha256:2ab03c73be91f7b5f69ac33667394d563a1bb2cb7da5f2429a148c3df805df34
+        name: prowlarr
+        ports:
+        - name: http
+          containerPort: 9696
+        envFrom:
+        - configMapRef:
+            name: linux-server-io-env
+        volumeMounts:
+        - name: configdir
+          mountPath: /config
+      volumes:
+      - name: configdir
+        persistentVolumeClaim:
+          claimName: prowlarr-config-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prowlarr-config-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 64Mi

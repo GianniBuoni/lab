@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: radarr
+  name: radarr
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+      - image: lscr.io/linuxserver/radarr:6.1.1-delvelop@sha256:688b4ca6b25203a59683a9985a13fbb14c1e1473a4dc5ff1b1ce58d526f9c32c
+        name: radarr
+        ports:
+        - name: http
+          containerPort: 7878
+        envFrom:
+        - configMapRef:
+            name: linux-server-io-env
+        volumeMounts:
+        - name: configdir
+          mountPath: /config
+        - name: datadir
+          mountPath: /data
+      volumes:
+      - name: configdir
+        persistentVolumeClaim:
+          claimName: radarr-config-pvc
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: media-stack-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: radarr-config-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 64Mi
