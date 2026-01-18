@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      initContainers:
+      - name: jellyfin-data
+        image: busybox:latest
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          mkdir -p /data/jellyfin/anime
+          mkdir -p /data/jellyfin/movies
+          mkdir -p /data/jellyfin/tv
+          chown 1000 -R /data/jellyfin
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      containers:
+      - image: lscr.io/linuxserver/jellyfin:10.11.5
+        name: jellyfin
+        env:
+        - name: TZ
+          value: "America/New_York"
+        - name: PUID
+          value: "1000"
+        - name: GUID
+          value: "1000"
+        ports:
+        - name: http
+          containerPort: 8096
+        - name: local-udp
+          containerPort: 7359
+          protocol: UDP
+        volumeMounts:
+        - name: configdir
+          mountPath: /config
+        - name: datadir
+          subPath: jellyfin
+          mountPath: /data
+      volumes:
+      - name: configdir
+        persistentVolumeClaim:
+          claimName: jellyfin-config-pvc
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: media-stack-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi

@@ -31,6 +31,13 @@ patches:
       value: Host(`home.dev.noodoodle.us`)
 - target:
     kind: IngressRoute
+    name: jellyfin-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`jellyfin.dev.noodoodle.us`)
+- target:
+    kind: IngressRoute
     name: pihole-ingress
   patch: |
     - op: replace

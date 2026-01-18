@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-web
+spec:
+  selector:
+    app: jellyfin
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin-ingress
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`jellyfin.noodoodle.us`)
+    services:
+    - name: jellyfin-web
+      namespace: media-stack
+      port: 80
