@@ -46,11 +46,9 @@ spec:
         - containerPort: 6881
         - containerPort: 6881
           protocol: UDP
-        env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
+        envFrom:
+        - configMapRef:
+            name: linux-server-io-env
         volumeMounts:
         - name: configdir
           mountPath: /config

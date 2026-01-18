@@ -4,3 +4,4 @@ namespace: media-stack
 resources:
 - namespace.yaml
 - pvc.yaml
+- configmap.yaml

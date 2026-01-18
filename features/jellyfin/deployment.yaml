@@ -4,6 +4,8 @@ metadata:
   labels:
     app: jellyfin
   name: jellyfin
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -31,13 +33,9 @@ spec:
       containers:
       - image: lscr.io/linuxserver/jellyfin:10.11.5@sha256:313571f253bf1035809f6856bb063904456226ef3899b96e60ee4597b3477246
         name: jellyfin
-        env:
-        - name: TZ
-          value: "America/New_York"
-        - name: PUID
-          value: "1000"
-        - name: GUID
-          value: "1000"
+        envFrom:
+        - configMapRef:
+            name: linux-server-io-env
         ports:
         - name: http
           containerPort: 8096
