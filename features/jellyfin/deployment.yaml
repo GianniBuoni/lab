@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
       - name: jellyfin-data
-        image: busybox:latest
+        image: busybox:latest@sha256:2383baad1860bbe9d8a7a843775048fd07d8afe292b94bd876df64a69aae7cb1
         command:
         - "/bin/sh"
         - "-c"
@@ -29,7 +29,7 @@ spec:
         - name: datadir
           mountPath: /data
       containers:
-      - image: lscr.io/linuxserver/jellyfin:10.11.5
+      - image: lscr.io/linuxserver/jellyfin:10.11.5@sha256:313571f253bf1035809f6856bb063904456226ef3899b96e60ee4597b3477246
         name: jellyfin
         env:
         - name: TZ
