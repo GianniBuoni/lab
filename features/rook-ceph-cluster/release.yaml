@@ -6,6 +6,8 @@ metadata:
     reloader.stakater.com/auto: "true"
 spec:
   interval: 12h
+  dependsOn:
+  - name: rook-ceph
   chart:
     spec:
       chart: rook-ceph-cluster
