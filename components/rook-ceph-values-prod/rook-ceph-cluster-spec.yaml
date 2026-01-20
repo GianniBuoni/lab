@@ -10,9 +10,15 @@ cephClusterSpec:
     - name: sleepy-gary-00
       devices:
       - name: /dev/mapper/vg-osd
+        config:
+          encryptedDevice: true
     - name: sleepy-gary-01
       devices:
       - name: /dev/mapper/vg-osd
+        config:
+          encryptedDevice: true
     - name: sleepy-gary-02
       devices:
       - name: /dev/mapper/vg-osd
+        config:
+          encryptedDevice: true
