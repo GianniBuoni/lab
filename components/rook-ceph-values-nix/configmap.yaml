@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: rook-ceph-osd-env-override
+  namespace: rook-ceph
 data:
   # Default ceph image PATH:
   # /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
