@@ -1,4 +1,5 @@
 cephClusterSpec:
+  skipUpgradeChecks: true
   dashboard:
     enabled: true
     ssl: false
