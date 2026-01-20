@@ -1,0 +1,18 @@
+cephClusterSpec:
+  dashboard:
+    enabled: true
+    ssl: false
+
+  storage:
+    useAllNodes: false
+    useAllDevices: false
+    nodes:
+    - name: sleepy-gary-00
+      devices:
+      - name: /dev/mapper/vg-osd
+    - name: sleepy-gary-01
+      devices:
+      - name: /dev/mapper/vg-osd
+    - name: sleepy-gary-02
+      devices:
+      - name: /dev/mapper/vg-osd
