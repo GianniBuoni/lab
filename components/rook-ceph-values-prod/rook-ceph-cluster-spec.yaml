@@ -11,8 +11,8 @@ cephClusterSpec:
       devices:
       - name: /dev/mapper/vg-osd
     - name: sleepy-gary-01
-      devices:
-      - name: /dev/mapper/vg-osd
+      # devices:
+      # - name: /dev/mapper/vg-osd
     - name: sleepy-gary-02
       devices:
       - name: /dev/mapper/vg-osd
