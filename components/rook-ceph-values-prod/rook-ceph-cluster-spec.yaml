@@ -8,15 +8,12 @@ cephClusterSpec:
     useAllNodes: false
     useAllDevices: false
     nodes:
-    - name: sleepy-gary-00
-      devices:
-      - name: /dev/disk/by-partlabel/r-data
-    - name: sleepy-gary-01
-      devices:
-      - name: /dev/disk/by-partlabel/r-data
-    - name: sleepy-gary-02
-      devices:
-      - name: /dev/disk/by-partlabel/r-data
     - name: sleepy-gary-work-00
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
     - name: sleepy-gary-work-01
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
     - name: sleepy-gary-work-02
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
