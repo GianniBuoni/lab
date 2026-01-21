@@ -10,10 +10,13 @@ cephClusterSpec:
     nodes:
     - name: sleepy-gary-00
       devices:
-      - name: /dev/mapper/vg-osd
+      - name: /dev/sdb1
     - name: sleepy-gary-01
       devices:
-      - name: /dev/mapper/vg-osd
+      - name: /dev/sdb1
     - name: sleepy-gary-02
       devices:
-      - name: /dev/mapper/vg-osd
+      - name: /dev/sdb1
+    - name: sleepy-gary-work-00
+    - name: sleepy-gary-work-01
+    - name: sleepy-gary-work-02

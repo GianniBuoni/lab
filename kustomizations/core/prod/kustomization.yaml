@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/rook-ceph-operator
-- ../../../features/rook-ceph-cluster
+# - ../../../features/rook-ceph-cluster
 - ../../../features/reloader
 - ../../../features/secrets
 components:
