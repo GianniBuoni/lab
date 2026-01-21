@@ -13,6 +13,7 @@
     devshells = with config.flake.aspects.devshells; {
       staging.imports = [base staging];
       testing.imports = [base testing];
+      prod.imports = [base prod];
     };
     devShells.default = self'.devShells.staging;
   };
