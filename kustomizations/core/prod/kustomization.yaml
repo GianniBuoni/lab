@@ -6,5 +6,4 @@ resources:
 - ../../../features/reloader
 - ../../../features/secrets
 components:
-- ../../../components/rook-ceph-values-nix
-- ../../../components/rook-ceph-values-prod
+# - ../../../components/rook-ceph-values-prod
