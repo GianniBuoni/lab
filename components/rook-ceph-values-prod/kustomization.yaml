@@ -7,6 +7,21 @@ configMapGenerator:
   files:
   - values.yaml=rook-ceph-cluster-spec.yaml
 
+- name: rook-ceph-fs
+  namespace: rook-ceph
+  files:
+  - values.yaml=rook-ceph-fs.yaml
+
+- name: rook-ceph-rbd
+  namespace: rook-ceph
+  files:
+  - values.yaml=rook-ceph-rbd.yaml
+
+- name: rook-ceph-bucket
+  namespace: rook-ceph
+  files:
+  - values.yaml=rook-ceph-bucket.yaml
+
 generatorOptions:
   disableNameSuffixHash: true
 
@@ -19,7 +34,13 @@ patches:
       target:
         kind: HelmRelease
         name: rook-ceph-cluster
-      path: /spec/valuesFrom/0
+      path: /spec/valuesFrom
       value:
-        kind: ConfigMap
+      - kind: ConfigMap
         name: rook-ceph-cluster-spec
+      - kind: ConfigMap
+        name: rook-ceph-fs
+      - kind: ConfigMap
+        name: rook-ceph-rbd
+      - kind: ConfigMap
+        name: rook-ceph-bucket
