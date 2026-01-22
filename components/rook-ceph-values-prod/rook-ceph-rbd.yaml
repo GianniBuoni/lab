@@ -31,7 +31,6 @@ cephBlockPools:
     name: .nfs
     failureDomain: host
     replicated:
-      size: 1
-      requireSafeReplicaSize: false
+      size: 3
   storageClass:
     enabled: false
