@@ -4,3 +4,4 @@ resources:
 - ../../../features/longhorn
 - ../../../features/secrets
 components:
+- ../../../components/longhorn-talos

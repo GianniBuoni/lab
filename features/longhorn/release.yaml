@@ -33,7 +33,4 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  values:
-    defaultSettings:
-      defaultDataPath: /var/mnt/longhorn
-      storageReservedPercentageForDefaultDisk: 0
+  valuesFrom: []
