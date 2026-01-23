@@ -7,7 +7,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`ceph.ts.noodoodle.us`)
+  - match: Host(`ceph.int.noodoodle.us`)
     services:
     - name: rook-ceph-mgr-dashboard
       namespace: rook-ceph
