@@ -10,5 +10,5 @@ patches:
     - op: add
       path: /spec/valuesFrom/0
       value:
-        - kind: Secret
-          name: tailscale-oauth
+        kind: Secret
+        name: tailscale-oauth
