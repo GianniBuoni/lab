@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./kustomizations/core/staging/
+  path: ./kustomizations/core/dev/
   prune: true
   sourceRef:
     kind: GitRepository
