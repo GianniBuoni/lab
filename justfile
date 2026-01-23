@@ -13,7 +13,7 @@ apply KUSTOMIZATION *FLAGS:
     kubectl apply -k ./kustomizations/{{KUSTOMIZATION}}/$CLUSTER_BRANCH \
     {{FLAGS}}
 # bootstraps flux and sops onto current context
-bootstrap DEPLOY_KEY_PATH:
+bootstrap DEPLOY_KEY_PATH: secrets
     flux bootstrap git \
     --private-key-file={{DEPLOY_KEY_PATH}} \
     --url={{FLUX_GIT_REPO}} \

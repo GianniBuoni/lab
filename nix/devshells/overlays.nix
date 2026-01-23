@@ -22,6 +22,8 @@ in {
   in {
     env = [
       (mkEnv "CLUSTER_BRANCH" "${clusterContext}")
+      (mkTls "TLS_CRT_FILE" "crt" "${clusterContext}")
+      (mkTls "TLS_KEY_FILE" "key" "${clusterContext}")
     ];
   };
 }
