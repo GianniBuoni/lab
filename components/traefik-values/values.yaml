@@ -9,7 +9,7 @@ ports:
         to: websecure
   nfs:
     expose:
-      default: true
+      default: false
     port: 2049
     exposedPort: 2049
 

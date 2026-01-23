@@ -1,0 +1,10 @@
+operatorConfig:
+  defaultTags:
+  - "tag:k8s-operator"
+  hostname: "k8s-operator"
+
+proxyConfig:
+  defaultTags: "tag:k8s"
+
+apiServerProxyConfig:
+  allowImpersonation: "true"

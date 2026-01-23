@@ -1,16 +1,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core
+  name: infra
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./kustomizations/core/prod/
+  path: ./kustomizations/infra/prod/
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  healthChecks:
-  - kind: Deployment
-    namespace: rook-ceph
-    name: rook-ceph-mds-ceph-filesystem-b
+  dependsOn:
+  - name: core
