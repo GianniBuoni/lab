@@ -6,16 +6,16 @@
     '';
     commands = [
       {
-        name = "fgg";
-        category = "aliases";
-        help = "Alias for `flux get kustomizations`";
-        command = "flux get kustomizations";
-      }
-      {
         name = "k";
         category = "aliases";
-        help = "Alias for `kubectl <ARGS>`";
+        help = "Alias for `kubectl [args]`";
         command = "kubectl $@";
+      }
+      {
+        name = "t";
+        category = "aliases";
+        help = "Alias for `talosctl [args]`";
+        command = "talosctl $@";
       }
       {
         name = "enterTest";
@@ -26,9 +26,7 @@
           k version --client=true
           helm version
           flux version --client
-          minikube version
-          # must be installed on the host system
-          libvirtd -V
+          talosctl version --client
         '';
       }
     ];
