@@ -11,10 +11,9 @@
 
   perSystem = {self', ...}: {
     devshells = with config.flake.aspects.devshells; {
-      staging.imports = [base staging];
-      testing.imports = [base testing];
+      dev.imports = [base dev];
       prod.imports = [base prod];
     };
-    devShells.default = self'.devShells.staging;
+    devShells.default = self'.devShells.dev;
   };
 }

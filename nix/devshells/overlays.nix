@@ -1,12 +1,10 @@
 let
   mkEnv = name: value: {inherit name value;};
-
-  baseTlsPath = "/run/secrets";
-
   mkTls = name: extension: cluster: {
     inherit name;
     value = "${baseTlsPath}/${cluster}/tls.${extension}";
   };
+  baseTlsPath = "/run/secrets";
 in {
   flake.aspects.devshells.dev = let
     clusterContext = "dev";
