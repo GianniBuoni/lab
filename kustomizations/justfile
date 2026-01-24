@@ -1,0 +1,42 @@
+k_base := justfile_directory() + "/kustomizations"
+is_prod := if env("CLUSTER_BRANCH") == "prod" {"true"} else {""}
+
+# Runs a build of given kustomization
+@build kustomization:
+    kubectl kustomize \
+    {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH
+    echo ""
+# Apply a kustomization for testing purposes
+@apply kustomization: (build kustomization)
+    if "{{is_prod}}"; then \
+        echo "Don't run this on the prod server!"; \
+    else \
+        kubectl apply -k \
+        {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH; \
+    fi
+# Boostrap secrets onto the current context
+@secrets:
+    echo "=== Boostrapping secrets to $CLUSTER_BRANCH ==="
+    kubectl -n kube-system create secret tls sealed-secrets-key --cert="$TLS_CRT_FILE" --key="$TLS_KEY_FILE"
+    kubectl -n kube-system label secret sealed-secrets-key sealedsecrets.bitnami.com/sealed-secrets-key=active
+# Suspends flux kustomization reconciliation for cleanup/maitenence
+@suspend:
+    susp () { \
+        if test $(flux get ks $1); then \
+            flux suspend ks $1; \
+            echo "kustomization $1 suspended; continuing ..."; \
+            echo ""; \
+            shift; \
+        else \
+            echo "skipping $k ..."; \
+            echo ""; \
+            shift; \
+        fi \
+    }; \
+    kustomizations=("core" "infra" "config" "apps"); \
+    echo "=== Suspending flux kustomizations ==="; \
+    for k in "${kustomizations[@]}"; do \
+        echo "suspending $k."; \
+        susp $k; \
+    done
+    
