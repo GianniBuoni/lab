@@ -12,6 +12,7 @@
       kubectl
       kubernetes-helm
       kubeseal
+      talosctl
 
       # extra utilities
       sops
