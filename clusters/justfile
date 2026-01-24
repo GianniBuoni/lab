@@ -1,0 +1,19 @@
+flux_repo := "ssh://git@github.com/GianniBuoni/lab.git"
+
+# Bootstraps flux onto the current context
+[arg("context", short="c")]
+@bootstrap deploy_key context="dev":
+    if [ $CLUSTER_BRANCH != "{{context}}" ]; then \
+        echo "Passed in context and cluster environment do not match."; \
+        echo "Please ensure that you are bootsrapping the correct cluster."; \
+        echo "Production context requires the '--conxtext=prod' flag."; \
+        exit 1; \
+    else \
+        echo "=== Bootstrapping flux to $CLUSTER_BRANCH ==="; \
+        flux bootstrap git \
+        --private-key-file={{deploy_key}} \
+        --url={{flux_repo}} \
+        --branch=main \
+        --path="clusters/$CLUSTER_BRANCH" \
+        --silent; \
+    fi

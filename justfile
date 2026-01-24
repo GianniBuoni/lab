@@ -1,5 +1,5 @@
-# kustomization submodule
 mod kustomizations
+mod clusters
 
 # switch context
 switch:
