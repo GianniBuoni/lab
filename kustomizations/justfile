@@ -22,13 +22,13 @@ is_prod := if env("CLUSTER_BRANCH") == "prod" {"true"} else {""}
 # Suspends flux kustomization reconciliation for cleanup/maitenence
 @suspend:
     susp () { \
-        if test $(flux get ks $1); then \
-            flux suspend ks $1; \
-            echo "kustomization $1 suspended; continuing ..."; \
+        if [ "flux get ks $1 | rg failed" ]; then \
+            echo "Kustomization not found, skipping $k ..."; \
             echo ""; \
             shift; \
         else \
-            echo "skipping $k ..."; \
+            flux suspend ks $1; \
+            echo "Kustomization $1 suspended; continuing ..."; \
             echo ""; \
             shift; \
         fi \
@@ -36,7 +36,6 @@ is_prod := if env("CLUSTER_BRANCH") == "prod" {"true"} else {""}
     kustomizations=("core" "infra" "config" "apps"); \
     echo "=== Suspending flux kustomizations ==="; \
     for k in "${kustomizations[@]}"; do \
-        echo "suspending $k."; \
+        echo "Suspending $k."; \
         susp $k; \
     done
-    
