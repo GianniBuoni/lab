@@ -7,19 +7,29 @@ switch:
         dev) echo "use flake .#prod" > .envrc; direnv reload;; \
         prod) echo "use flake ." > .envrc; direnv reload;; \
     esac
-# create new testing/staging cluster via minikube
-create:
-    minikube start \
-    -p $CLUSTER_BRANCH \
-    --driver=kvm2 \
-    --memory=16384 \
-    --cpus=8 \
-    --disk-size=20g \
-    --extra-disks=1
-# create a new k3d cluster for quick testing
-create-testing:
-    k3d cluster create $CLUSTER_BRANCH \
-    --no-lb \
-    --k3s-arg "--disable=traefik@server:*" \
-    --image rancher/k3s:latest \
-    --subnet 172.28.0.0/16
+# creates a cluster for local development and testing
+@create:
+    echo "Pick a backend:"; \
+    echo ""; \
+    echo "0) k3d"; \
+    echo "1) talos docker"; \
+    echo ""; \
+    read -p "Choose [0..1]: " choice; \
+    case $choice in \
+        0) just clusters::_k3d;; \
+        1) just clusters::_talos;; \
+        *) exit 1;; \
+    esac
+# destroys and cleans up a local cluster
+@destroy:
+    echo "Pick a backend:"; \
+    echo ""; \
+    echo "0) k3d"; \
+    echo "1) talos docker"; \
+    echo ""; \
+    read -p "Choose [0..1]: " choice; \
+    case $choice in \
+        0) k3d cluster delete $CLUSTER_BRANCH;; \
+        1) talosctl cluster destroy --name $CLUSTER_BRANCH;; \
+        *) exit 1;; \
+    esac

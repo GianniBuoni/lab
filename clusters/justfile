@@ -17,3 +17,15 @@ flux_repo := "ssh://git@github.com/GianniBuoni/lab.git"
         --path="clusters/$CLUSTER_BRANCH" \
         --silent; \
     fi
+# create a new k3d cluster for quick testing
+_k3d:
+    k3d cluster create $CLUSTER_BRANCH \
+    --no-lb \
+    --k3s-arg "--disable=traefik@server:*" \
+    --image rancher/k3s:latest \
+    --subnet 172.28.0.0/16
+_talos:
+    talosctl cluster create docker \
+    --name $CLUSTER_BRANCH \
+    --workers 3 \
+    --subnet 172.28.0.0/16
