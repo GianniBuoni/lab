@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ../../../features/reloader
 - ../../../features/secrets
+- ../../../features/local-path-provisioner
