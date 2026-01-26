@@ -1,0 +1,19 @@
+configuration:
+  enabled: true
+
+controller:
+  type: Deployment
+
+env:
+- name: TZ
+  value: America/New_York
+
+ingress:
+  external: true
+
+service:
+  type: ClusterIP
+
+persistence:
+  enabled: true
+  size: 64Mi

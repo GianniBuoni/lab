@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+configMapGenerator:
+- name: home-assistant-values
+  namespace: home-assistant
+  files:
+  - values.yaml=values.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+patches:
+- target:
+    kind: HelmRelease
+    name: home-assistant
+    namespace: home-assistant
+  patch: |
+    - op: add
+      path: /spec/valuesFrom/0
+      value:
+        kind: ConfigMap
+        name: home-assistant-values
