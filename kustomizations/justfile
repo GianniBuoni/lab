@@ -1,5 +1,4 @@
 k_base := justfile_directory() + "/kustomizations"
-is_prod := if env("CLUSTER_BRANCH") == "prod" {"true"} else {""}
 
 # Runs a build of given kustomization
 @build kustomization:
@@ -8,7 +7,7 @@ is_prod := if env("CLUSTER_BRANCH") == "prod" {"true"} else {""}
     echo ""
 # Apply a kustomization for testing purposes
 @apply kustomization: (build kustomization)
-    if "{{is_prod}}"; then \
+    if [ $CLUSTER_BRANCH == "prod" ]; then \
         echo "Don't run this on the prod server!"; \
     else \
         kubectl apply -k \
