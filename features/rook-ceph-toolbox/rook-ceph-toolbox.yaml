@@ -9,7 +9,7 @@ spec:
     spec:
       initContainers:
         - name: config-init
-          image: docker.io/rook/ceph:v1.18.9@sha256:a53a45a7bfec0fd6522465da014cb01f6b8e5a0fc4b41ebc8dc8bde94510c13c
+          image: docker.io/rook/ceph:v1.19.0@sha256:eed2f5037a2637650b8f18d8e7729821d22f1b2efb562a8a1a22232c76e8eefa
           command: ["/usr/local/bin/toolbox.sh"]
           args: ["--skip-watch"]
           imagePullPolicy: IfNotPresent
@@ -31,7 +31,7 @@ spec:
               readOnly: true
       containers:
         - name: script
-          image: docker.io/rook/ceph:v1.18.9@sha256:a53a45a7bfec0fd6522465da014cb01f6b8e5a0fc4b41ebc8dc8bde94510c13c
+          image: docker.io/rook/ceph:v1.19.0@sha256:eed2f5037a2637650b8f18d8e7729821d22f1b2efb562a8a1a22232c76e8eefa
           volumeMounts:
             - mountPath: /etc/ceph
               name: ceph-config
