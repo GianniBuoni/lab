@@ -1,46 +1,20 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
-
-configMapGenerator:
-- name: rook-ceph-cluster-spec
-  namespace: rook-ceph
-  files:
-  - values.yaml=rook-ceph-cluster-spec.yaml
-
-- name: rook-ceph-fs
-  namespace: rook-ceph
-  files:
-  - values.yaml=rook-ceph-fs.yaml
-
-- name: rook-ceph-rbd
-  namespace: rook-ceph
-  files:
-  - values.yaml=rook-ceph-rbd.yaml
-
-- name: rook-ceph-bucket
-  namespace: rook-ceph
-  files:
-  - values.yaml=rook-ceph-bucket.yaml
-
-generatorOptions:
-  disableNameSuffixHash: true
-
 patches:
 - target:
-    kind: HelmRelease
-    name: rook-ceph-cluster
+    kind: CephCluster
+    name: rook-ceph
+    namespace: rook-ceph
   patch: |
-    - op: add
-      target:
-        kind: HelmRelease
-        name: rook-ceph-cluster
-      path: /spec/valuesFrom
+    - op: replace
+      path: /spec/storage/nodes
       value:
-      - kind: ConfigMap
-        name: rook-ceph-cluster-spec
-      - kind: ConfigMap
-        name: rook-ceph-fs
-      - kind: ConfigMap
-        name: rook-ceph-rbd
-      - kind: ConfigMap
-        name: rook-ceph-bucket
+      - name: dev-00
+        devices:
+        - name: /dev/disk/by-partlabel/r-data
+      - name: dev-01
+        devices:
+        - name: /dev/disk/by-partlabel/r-data
+      - name: dev-02
+        devices:
+        - name: /dev/disk/by-partlabel/r-data
