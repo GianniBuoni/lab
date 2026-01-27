@@ -56,22 +56,11 @@ spec:
       dataSource: zero
       iteration: 1
     allowUninstallWithVolumes: false
-  # placement:
-  #   all:
-  #     nodeAffinity:
-  #       requiredDuringSchedulingIgnoredDuringExecution:
-  #         nodeSelectorTerms:
-  #         - matchExpressions:
-  #           - key: role
-  #             operator: In
-  #             values:
-  #             - storage-node
-  #     podAffinity:
-  #     podAntiAffinity:
-  #     topologySpreadConstraints:
-  #     tolerations:
-  #     - key: storage-node
-  #       operator: Exists
+  placement:
+    all:
+      tolerations:
+      - key: storage
+        operator: Exists
   removeOSDsIfOutAndSafeToRemove: false
   priorityClassNames:
     #all: rook-ceph-default-priority-class
