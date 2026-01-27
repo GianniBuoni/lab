@@ -1,0 +1,46 @@
+apiVersion: ceph.rook.io/v1
+kind: CephFilesystem
+metadata:
+  name: ceph-fs
+  namespace: rook-ceph
+spec:
+  metadataPool:
+    failureDomain: osd
+    replicated:
+      size: 3
+  dataPools:
+  - name: replicated
+    failureDomain: osd
+    replicated:
+      size: 3
+  - name: erasurecoded
+    failureDomain: osd
+    erasureCoded:
+      dataChunks: 2
+      codingChunks: 1
+  preserveFilesystemOnDelete: true
+  metadataServer:
+    activeCount: 1
+    activeStandby: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ceph-fs
+allowVolumeExpansion: true
+provisioner: rook-ceph.cephfs.csi.ceph.com
+parameters:
+  # rook-ceph cluster namespace
+  clusterID: rook-ceph
+  fsName: ceph-fs
+  pool: erasurecoded
+  # The secrets contain Ceph admin credentials. These are generated automatically by the operator in the same namespace as the cluster.
+  csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+  csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph # namespace:cluster
+  csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+  csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph # namespace:cluster
+  csi.storage.k8s.io/controller-publish-secret-name: rook-csi-cephfs-provisioner
+  csi.storage.k8s.io/controller-publish-secret-namespace: rook-ceph # namespace:cluster
+  csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+  csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph # namespace:cluster
+reclaimPolicy: Delete

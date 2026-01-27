@@ -1,0 +1,133 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+spec:
+  cephVersion:
+    # check supported ceph images before merging any renovate PRs!
+    image: quay.io/ceph/ceph:v19.2.3
+    allowUnsupported: false
+  dataDirHostPath: /var/lib/rook
+  skipUpgradeChecks: false
+  continueUpgradeAfterChecksEvenIfNotHealthy: false
+  waitTimeoutForHealthyOSDInMinutes: 10
+  upgradeOSDRequiresHealthyPGs: false
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  mgr:
+    # 1 is minimum, if higher availability is needed incease to 2 to have one on standby.
+    count: 1
+    allowMultiplePerNode: false
+    modules:
+    - name: rook
+      enabled: true
+  # enable the ceph dashboard for viewing cluster status
+  dashboard:
+    enabled: true
+    ssl: false
+  monitoring:
+    # requires Prometheus to be pre-installed
+    enabled: false
+    metricsDisabled: true
+    # Ceph exporter metrics config.
+    exporter:
+      perfCountersPrioLimit: 5
+      statsPeriodSeconds: 5
+  network:
+    connections:
+      encryption:
+        enabled: false
+      compression:
+        enabled: false
+      requireMsgr2: false
+  crashCollector:
+    disable: false
+  logCollector:
+    enabled: true
+    periodicity: daily # one of: hourly, daily, weekly, monthly
+    maxLogSize: 500M # SUFFIX may be 'M' or 'G'. Must be at least 1M.
+  cleanupPolicy:
+    # To destroy all Rook data on hosts during uninstall, confirmation must be set to "yes-really-destroy-data".
+    # If the empty string is set, Rook will not destroy any data on hosts during uninstall.
+    confirmation: ""
+    sanitizeDisks:
+      method: quick
+      dataSource: zero
+      iteration: 1
+    allowUninstallWithVolumes: false
+  # placement:
+  #   all:
+  #     nodeAffinity:
+  #       requiredDuringSchedulingIgnoredDuringExecution:
+  #         nodeSelectorTerms:
+  #         - matchExpressions:
+  #           - key: role
+  #             operator: In
+  #             values:
+  #             - storage-node
+  #     podAffinity:
+  #     podAntiAffinity:
+  #     topologySpreadConstraints:
+  #     tolerations:
+  #     - key: storage-node
+  #       operator: Exists
+  removeOSDsIfOutAndSafeToRemove: false
+  priorityClassNames:
+    #all: rook-ceph-default-priority-class
+    mon: system-node-critical
+    osd: system-node-critical
+    mgr: system-cluster-critical
+    #crashcollector: rook-ceph-crashcollector-priority-class
+  storage: # cluster level storage configuration and selection
+    useAllNodes: false
+    useAllDevices: false
+    # whether to allow changing the device class of an OSD after it is created
+    allowDeviceClassUpdate: false
+    # whether to allow resizing the OSD crush weight after osd pvc is increased
+    allowOsdCrushWeightUpdate: false
+    nodes:
+    - name: sleepy-gary-00
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+    - name: sleepy-gary-01
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+    - name: sleepy-gary-02
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+    scheduleAlways: false
+    onlyApplyOSDPlacement: false
+  disruptionManagement:
+    managePodBudgets: true
+    osdMaintenanceTimeout: 30
+  csi:
+    readAffinity:
+      enabled: false
+  healthCheck:
+    daemonHealth:
+      mon:
+        disabled: false
+        interval: 45s
+      osd:
+        disabled: false
+        interval: 60s
+      status:
+        disabled: false
+        interval: 60s
+    # Change pod liveness probe timing or threshold values. Works for all mon,mgr,osd daemons.
+    livenessProbe:
+      mon:
+        disabled: false
+      mgr:
+        disabled: false
+      osd:
+        disabled: false
+    # Change pod startup probe timing or threshold values. Works for all mon,mgr,osd daemons.
+    startupProbe:
+      mon:
+        disabled: false
+      mgr:
+        disabled: false
+      osd:
+        disabled: false
