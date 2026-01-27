@@ -4,9 +4,10 @@ providers:
 
 ports:
   web:
-    redirections:
-      entryPoint:
-        to: websecure
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
   nfs:
     expose:
       default: false
@@ -25,14 +26,13 @@ ports:
       default: false
     exposedPort: 7080
     port: 7080
-    redirections:
-      entryPoint:
-        to: websecure-ext
+    http:
+      redirections:
+        entryPoint:
+          to: websecure-ext
 
   websecure-ext:
     expose:
       default: false
     exposedPort: 7443
     port: 7443
-    tls:
-      enabled: true
