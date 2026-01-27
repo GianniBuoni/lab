@@ -1,21 +1,58 @@
-configOverride: |
-  [global]
-  mon_allow_pool_delete = true
-  osd_pool_default_size = 1
-  osd_pool_default_min_size = 1
-
 cephClusterSpec:
-  dataDirHostPath: /data/rook
-  skipUpgradeChecks: false
-  mon:
-    count: 1
-    allowMultiplePerNode: true
-  mgr:
-    count: 1
-    allowMultiplePerNode: true
   dashboard:
     enabled: true
     ssl: false
+  mon:
+    count: 3
+  mgr:
+    count: 1
+
   storage:
-    useAllNodes: true
-    useAllDevices: true
+    useAllNodes: false
+    useAllDevices: false
+    nodes:
+    - name: dev-00
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+    - name: dev-01
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+    - name: dev-02
+      devices:
+      - name: /dev/disk/by-partlabel/r-data
+
+  resources:
+    mgr:
+      limits:
+        memory: "1Gi"
+      requests: {}
+    mon:
+      limits:
+        memory: "2Gi"
+      requests: {}
+    osd:
+      limits:
+        memory: "4Gi"
+      requests: {}
+    prepareosd:
+      requests: {}
+    mgr-sidecar:
+      limits:
+        memory: "100Mi"
+      requests: {}
+    crashcollector:
+      limits:
+        memory: "60Mi"
+      requests: {}
+    logcollector:
+      limits:
+        memory: "1Gi"
+      requests: {}
+    cleanup:
+      limits:
+        memory: "1Gi"
+      requests: {}
+    exporter:
+      limits:
+        memory: "128Mi"
+      requests: {}

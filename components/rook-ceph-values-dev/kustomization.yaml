@@ -6,35 +6,41 @@ configMapGenerator:
   namespace: rook-ceph
   files:
   - values.yaml=rook-ceph-cluster-spec.yaml
-- name: rook-ceph-cluster-blockpools
+
+- name: rook-ceph-fs
   namespace: rook-ceph
   files:
-  - values.yaml=rook-ceph-cluster-blockpools.yaml
-- name: rook-ceph-cluster-bucket
+  - values.yaml=rook-ceph-fs.yaml
+
+- name: rook-ceph-rbd
   namespace: rook-ceph
   files:
-  - values.yaml=rook-ceph-cluster-bucket.yaml
-- name: rook-ceph-cluster-fs
+  - values.yaml=rook-ceph-rbd.yaml
+
+- name: rook-ceph-bucket
   namespace: rook-ceph
   files:
-  - values.yaml=rook-ceph-cluster-fs.yaml
+  - values.yaml=rook-ceph-bucket.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
 
 patches:
-  - target:
-      kind: HelmRelease
-      name: rook-ceph-cluster
-    patch: |
-      - op: add
-        path: /spec/valuesFrom
-        value:
-        - kind: ConfigMap
-          name: rook-ceph-cluster-spec
-        - kind: ConfigMap
-          name: rook-ceph-cluster-blockpools
-        - kind: ConfigMap
-          name: rook-ceph-cluster-bucket
-        - kind: ConfigMap
-          name: rook-ceph-cluster-fs
+- target:
+    kind: HelmRelease
+    name: rook-ceph-cluster
+  patch: |
+    - op: add
+      target:
+        kind: HelmRelease
+        name: rook-ceph-cluster
+      path: /spec/valuesFrom
+      value:
+      - kind: ConfigMap
+        name: rook-ceph-cluster-spec
+      - kind: ConfigMap
+        name: rook-ceph-fs
+      - kind: ConfigMap
+        name: rook-ceph-rbd
+      - kind: ConfigMap
+        name: rook-ceph-bucket

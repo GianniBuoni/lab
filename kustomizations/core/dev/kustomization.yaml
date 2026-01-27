@@ -3,4 +3,7 @@ kind: Kustomization
 resources:
 - ../../../features/reloader
 - ../../../features/secrets
-- ../../../features/local-path-provisioner
+- ../../../features/rook-ceph-operator
+- ../../../features/rook-ceph-cluster
+components:
+- ../../../components/rook-ceph-values-dev
