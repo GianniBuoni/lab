@@ -13,12 +13,12 @@ switch:
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
-    echo "1) talos docker"; \
+    echo "1) talos"; \
     echo ""; \
     read -p "Choose [0..1]: " choice; \
     case $choice in \
         0) just clusters::_k3d;; \
-        1) just clusters::_talos;; \
+        1) just talos::apply -i;; \
         *) exit 1;; \
     esac
 # destroys and cleans up a local cluster
@@ -26,11 +26,11 @@ switch:
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
-    echo "1) talos docker"; \
+    echo "1) talos"; \
     echo ""; \
     read -p "Choose [0..1]: " choice; \
     case $choice in \
         0) k3d cluster delete $CLUSTER_BRANCH;; \
-        1) talosctl cluster destroy --name $CLUSTER_BRANCH;; \
+        1) just talos::destroy;; \
         *) exit 1;; \
     esac
