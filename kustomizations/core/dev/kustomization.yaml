@@ -4,6 +4,3 @@ resources:
 - ../../../features/reloader
 - ../../../features/secrets
 - ../../../features/rook-ceph-operator
-- ../../../features/rook-ceph-cluster
-components:
-- ../../../components/rook-ceph-values-dev
