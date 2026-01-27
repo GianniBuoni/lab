@@ -1,0 +1,8 @@
+apiVersion: v1alpha1
+kind: RawVolumeConfig
+name: data
+provisioning:
+  diskSelector:
+    match: disk.transport == "virtio"
+  minSize: 10GB
+  grow: true

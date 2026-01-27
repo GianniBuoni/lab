@@ -1,0 +1,38 @@
+clusterName: dev-gary
+talosVersion: v1.12.1
+kubernetesVersion: v1.35.0
+endpoint: https://10.0.0.179:6443
+allowSchedulingOnControlPlanes: true
+
+nodes:
+- hostname: dev-00
+  ipAddress: 10.0.0.179
+  installDisk: /dev/vda
+  controlPlane: true
+
+- hostname: dev-01
+  ipAddress: 10.0.0.153
+  installDisk: /dev/vda
+  controlPlane: true
+
+- hostname: dev-02
+  ipAddress: 10.0.0.193
+  installDisk: /dev/vda
+  controlPlane: true
+
+controlPlane:
+  volumes:
+  - name: EPHEMERAL
+    provisioning:
+      diskSelector:
+        match: disk.transport == 'virtio'
+      maxSize: 10GiB
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+        - siderolabs/iscsi-tools
+        - siderolabs/util-linux-tools
+    bootloader: sd-boot
+  patches:
+  - "@./raw-volume.yaml"

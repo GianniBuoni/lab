@@ -1,0 +1,48 @@
+clusterName: sleepy-gary
+talosVersion: v1.12.1
+kubernetesVersion: v1.35.0
+endpoint: https://192.168.1.200:6443
+allowSchedulingOnControlPlanes: true
+
+nodes:
+- hostname: sleepy-gary-00
+  ipAddress: 192.168.1.200
+  controlPlane: true
+  installDisk: /dev/nvme0n1
+  schematic:
+    bootloader: sd-boot
+    customization:
+      systemExtensions:
+        officialExtensions:
+        - siderolabs/i915
+        - siderolabs/intel-ucode
+        - siderolabs/iscsi-tools
+        - siderolabs/util-linux-tools
+
+- hostname: sleepy-gary-01
+  ipAddress: 192.168.1.210
+  installDisk: /dev/nvme0n1
+  controlPlane: true
+
+- hostname: sleepy-gary-02
+  ipAddress: 192.168.1.202
+  installDisk: /dev/nvme0n1
+  controlPlane: true
+
+controlPlane:
+  nodeLabels: {}
+  volumes:
+  - name: EPHEMERAL
+    provisioning:
+      maxSize: 100GiB
+  schematic:
+    bootloader: sd-boot
+    customization:
+      systemExtensions:
+        officialExtensions:
+        - siderolabs/amd-ucode
+        - siderolabs/amdgpu
+        - siderolabs/iscsi-tools
+        - siderolabs/util-linux-tools
+  patches:
+  - "@../components/raw-volume.yaml"

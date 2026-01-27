@@ -1,5 +1,6 @@
-mod kustomizations
 mod clusters
+mod kustomizations
+mod talos
 
 # switch context
 switch:

@@ -1,0 +1,39 @@
+talos_dir := justfile_directory() + "/talos"
+clusterconfig := talos_dir + "/clusterconfig"
+
+@_get-nodes:
+    nodes=($TALOS_IPS); \
+    for i in "${!nodes[@]}"; do \
+        echo "$TALOS_NODE-0$i ${nodes[$i]}"; \
+    done
+
+@gen-config:
+    talhelper genconfig \
+    -c "{{talos_dir}}/$CLUSTER_BRANCH/talconfig.yaml" \
+    -s "{{talos_dir}}/$CLUSTER_BRANCH/talsecret.sops.yaml"
+
+@apply *flags:
+    nodes=($TALOS_IPS); \
+    config="{{clusterconfig}}/$TALOS_CLUSTER-"; \
+    for i in "${!nodes[@]}"; do \
+        config_file=; \
+        echo "=== Applying $TALOS_NODE-0$i to ${nodes[$i]} ==="; \
+        talosctl apply \
+        -f "$config$TALOS_NODE-0$i.yaml" \
+        -n "${nodes[$i]}" \
+        {{flags}}; \
+        echo ""; \
+    done
+
+@bootstrap:
+    nodes=($TALOS_IPS); \
+    talosctl bootstrap -n ${nodes[0]}
+
+@destroy:
+    context_check=$(talosctl config contexts | rg "\*.*sleepy"); \
+    if [ $CLUSTER_BRANCH == "prod" ] || [ "$context_check" != "" ]; then \
+        echo "DO NOT RUN IN PRODUCTION!"; \
+        echo "Use 'reset' task instead."; \
+    else \
+        talosctl reset --graceful=false --reboot=true; \
+    fi
