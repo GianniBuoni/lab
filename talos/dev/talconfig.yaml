@@ -19,6 +19,8 @@ nodes:
   ipAddress: 10.0.0.193
   installDisk: /dev/vda
   controlPlane: true
+  nodeTaints:
+    storage: ceph:NoSchedule
 
 controlPlane:
   volumes:
@@ -26,7 +28,7 @@ controlPlane:
     provisioning:
       diskSelector:
         match: disk.transport == 'virtio'
-      maxSize: 10GiB
+      maxSize: 20GiB
   schematic:
     customization:
       systemExtensions:
