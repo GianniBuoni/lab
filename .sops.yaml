@@ -1,0 +1,13 @@
+keys:
+- &dev age10j95gjrc67vzqemxjn5jx2ex0c5c2rsl5j0jsmwzkkz6md3d49msvv2r99
+- &prod age166hwas9re4rp979chz7mtkv4l8e0pc5fxr6js6mxltqekm5n8vxq4qvhjd
+
+creation_rules:
+- path_regex: dev.*sops.yaml$
+  key_groups:
+  - age:
+    - *dev
+- path_regex: prod.*sops.yaml$
+  key_groups:
+  - age:
+    - *prod

@@ -10,3 +10,5 @@
 
 # raw secrets dir
 **/secrets-raw
+# tlos cluster configurations
+**/clusterconfig
