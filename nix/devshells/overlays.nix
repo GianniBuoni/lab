@@ -21,19 +21,27 @@ in {
     env = [
       (mkAge "${clusterContext}")
       (mkEnv "CLUSTER_BRANCH" "${clusterContext}")
-      (mkEnv "TALOS_CLUSTER" "staging-gary")
+      (mkEnv "TALOS_CLUSTER" "dev-gary")
       (mkEnv "TALOS_IPS" "${nodes}")
-      (mkEnv "TALOS_NODE" "staging")
+      (mkEnv "TALOS_NODE" "dev")
       (mkTls "TLS_CRT_FILE" "crt" "${clusterContext}")
       (mkTls "TLS_KEY_FILE" "key" "${clusterContext}")
     ];
   };
   flake.aspects.devshells.prod = let
     clusterContext = "prod";
+    baseIP = "192.168.1";
+    nodeIP = ["200" "210" "202"];
+    nodes =
+      builtins.concatStringsSep " "
+      (builtins.map (ip: "${baseIP}.${ip}") nodeIP);
   in {
     env = [
       (mkAge "${clusterContext}")
       (mkEnv "CLUSTER_BRANCH" "${clusterContext}")
+      (mkEnv "TALOS_CLUSTER" "sleepy-gary")
+      (mkEnv "TALOS_IPS" "${nodes}")
+      (mkEnv "TALOS_NODE" "sleepy-gary")
       (mkTls "TLS_CRT_FILE" "crt" "${clusterContext}")
       (mkTls "TLS_KEY_FILE" "key" "${clusterContext}")
     ];
