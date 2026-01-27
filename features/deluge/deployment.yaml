@@ -38,7 +38,7 @@ spec:
         - name: datadir
           mountPath: /data
       containers:
-      - image: lscr.io/linuxserver/deluge:2.2.0@sha256:8e0d495f10f2ee29919f229ae0b32d92f2b7a5d5339fc6f171f19f3f94b9ed56
+      - image: lscr.io/linuxserver/deluge:18.04.1@sha256:0ac8716243944d28890565f759c7cedfc9e36a3fd5a827c9d0927abc0c8f97c9
         name: deluge
         ports:
         - name: http
