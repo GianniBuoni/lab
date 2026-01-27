@@ -19,6 +19,7 @@
       flake = false;
       url = "github:nix-systems/default";
     };
+    talhelper.url = "github:budimanjojo/talhelper";
   };
 
 }

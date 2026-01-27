@@ -1,6 +1,11 @@
 # base devshell packages
 {moduleWithSystem, ...}: {
-  flake.aspects.devshells.base = moduleWithSystem ({pkgs, ...}: {
+  flake-file.inputs.talhelper.url = "github:budimanjojo/talhelper";
+  flake.aspects.devshells.base = moduleWithSystem ({
+    pkgs,
+    inputs',
+    ...
+  }: {
     packages = with pkgs; [
       # cluster tools
       fluxcd
@@ -13,10 +18,10 @@
       kubernetes-helm
       kubeseal
       talosctl
+      inputs'.talhelper.packages.default
 
       # extra utilities
       sops
-      openssl
       just
     ];
   });
