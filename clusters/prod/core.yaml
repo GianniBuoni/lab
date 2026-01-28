@@ -10,7 +10,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  healthChecks:
-  - kind: Deployment
-    namespace: rook-ceph
-    name: rook-ceph-mds-ceph-filesystem-b
