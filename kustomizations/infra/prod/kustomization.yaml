@@ -4,6 +4,7 @@ resources:
 - ../../../features/cert-manager
 - ../../../features/tailscale
 - ../../../features/traefik
+- ../../../features/traefik-tailscale-svc
 components:
 - ../../../components/tailscale-values-prod
 - ../../../components/secrets-prod/tailscale-oauth
