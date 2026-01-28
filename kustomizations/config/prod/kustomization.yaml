@@ -2,8 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/cert-manager-cloudflare
-- ../../../features/rook-ceph-nfs
 - ../../../features/tailscale-ha-proxy
-- ../../../features/traefik-tailscale-svc
 components:
 - ../../../components/secrets-prod/cert-manager-issuer
