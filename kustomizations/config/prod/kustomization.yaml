@@ -3,5 +3,9 @@ kind: Kustomization
 resources:
 - ../../../features/cert-manager-cloudflare
 - ../../../features/tailscale-ha-proxy
+- ../../../features/rook-ceph-cluster-spec
+- ../../../features/rook-ceph-cluster-rbd
+- ../../../features/rook-ceph-cluster-fs
+- ../../../features/rook-ceph-nfs
 components:
 - ../../../components/secrets-prod/cert-manager-issuer
