@@ -2,7 +2,6 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: ceph-ingress
-  namespace: ingress
 spec:
   entryPoints:
   - websecure
@@ -23,6 +22,7 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
-      - name: rook-ceph-nfs-share-a
-        port: 2049
-        nativeLB: true
+    - name: rook-ceph-nfs-share-a
+      namespace: rook-ceph
+      port: 2049
+      nativeLB: true
