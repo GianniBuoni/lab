@@ -21,21 +21,10 @@ k_base := justfile_directory() + "/kustomizations"
     kubectl -n kube-system label secret sealed-secrets-key sealedsecrets.bitnami.com/sealed-secrets-key=active
 # Suspends flux kustomization reconciliation for cleanup/maitenence
 @suspend:
-    susp () { \
-        if [ "flux get ks $1 | rg failed" ]; then \
-            echo "Kustomization not found, skipping $k ..."; \
-            echo ""; \
-            shift; \
-        else \
-            flux suspend ks $1; \
-            echo "Kustomization $1 suspended; continuing ..."; \
-            echo ""; \
-            shift; \
-        fi \
-    }; \
     kustomizations=("core" "infra" "config" "apps"); \
     echo "=== Suspending flux kustomizations ==="; \
     for k in "${kustomizations[@]}"; do \
         echo "Suspending $k."; \
-        susp $k; \
+        flux suspend ks $k; \
+        echo ""; \
     done
