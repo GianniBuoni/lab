@@ -7,7 +7,8 @@ k_base := justfile_directory() + "/kustomizations"
     echo ""
 # Apply a kustomization for testing purposes
 @apply kustomization: (build kustomization)
-    if [ $CLUSTER_BRANCH == "prod" ]; then \
+    context_check=$(talosctl config contexts | rg "\*.*sleepy"); \
+    if [ $CLUSTER_BRANCH == "prod" ] || [ "$context_check" != "" ]; then \
         echo "Don't run this on the prod server!"; \
     else \
         kubectl apply -k \
