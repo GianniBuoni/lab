@@ -28,6 +28,8 @@ nodes:
   ipAddress: 192.168.1.202
   installDisk: /dev/nvme0n1
   controlPlane: true
+  nodeTaints:
+    storage: ceph:NoSchedule
 
 controlPlane:
   nodeLabels: {}
@@ -45,4 +47,4 @@ controlPlane:
         - siderolabs/iscsi-tools
         - siderolabs/util-linux-tools
   patches:
-  - "@../components/raw-volume.yaml"
+  - "@./raw-volume.yaml"
