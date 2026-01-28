@@ -85,6 +85,7 @@ spec:
     - name: sleepy-gary-02
       devices:
       - name: /dev/disk/by-partlabel/r-data
+      - name: /dev/disk/by-partlabel/r-data-01
     scheduleAlways: false
     onlyApplyOSDPlacement: false
   disruptionManagement:

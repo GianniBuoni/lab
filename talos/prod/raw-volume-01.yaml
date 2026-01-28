@@ -1,0 +1,9 @@
+apiVersion: v1alpha1
+kind: RawVolumeConfig
+name: data-01
+provisioning:
+  diskSelector:
+    match: disk.transport == "usb"
+  minSize: 100GB
+  grow: true
+

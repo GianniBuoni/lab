@@ -30,6 +30,8 @@ nodes:
   controlPlane: true
   nodeTaints:
     storage: ceph:NoSchedule
+  patches:
+  - "@./raw-volume-01.yaml"
 
 controlPlane:
   nodeLabels: {}
