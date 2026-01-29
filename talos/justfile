@@ -29,11 +29,11 @@ clusterconfig := talos_dir + "/clusterconfig"
     nodes=($TALOS_IPS); \
     talosctl bootstrap -n ${nodes[0]}
 
-@destroy:
+@_destroy:
     context_check=$(talosctl config contexts | rg "\*.*sleepy"); \
     if [ $CLUSTER_BRANCH == "prod" ] || [ "$context_check" != "" ]; then \
         echo "DO NOT RUN IN PRODUCTION!"; \
-        echo "Use 'reset' task instead."; \
+        echo "Use 'talosctl reset' if you really really mean it."; \
     else \
         talosctl reset --graceful=false --reboot=true; \
     fi

@@ -31,6 +31,6 @@ switch:
     read -p "Choose [0..1]: " choice; \
     case $choice in \
         0) k3d cluster delete $CLUSTER_BRANCH;; \
-        1) just talos::destroy;; \
+        1) just talos::_destroy;; \
         *) exit 1;; \
     esac
