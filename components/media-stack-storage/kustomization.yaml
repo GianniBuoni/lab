@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+patches:
+- target:
+    kind: Deployment
+    labelSelector: storage=media-stack
+  patch: |
+    - op: add
+      path: /spec/template/spec/volumes/0
+      value:
+        name: datadir
+        persistentVolumeClaim:
+          claimName: media-stack-pvc
+    - op: add
+      path: /spec/template/spec/containers/0/volumeMounts/0
+      value:
+        name: datadir
+        subPath: jellyfin
+        mountPath: /media
+- target:
+    kind: Deployment
+    name: jellyfin
+    namespace: media-stack
+  patch: |
+    - op: add
+      path: /spec/template/spec/initContainers/0
+      value:
+        name: jellyfin-data
+        image: busybox:latest
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          mkdir -p /media/jellyfin/anime
+          mkdir -p /media/jellyfin/movies
+          mkdir -p /media/jellyfin/tv
+          chown 1000 -R /media/jellyfin
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: datadir
+          mountPath: /media
