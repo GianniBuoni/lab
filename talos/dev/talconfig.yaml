@@ -19,8 +19,6 @@ nodes:
   ipAddress: 10.0.0.193
   installDisk: /dev/vda
   controlPlane: true
-  nodeTaints:
-    storage: ceph:NoSchedule
 
 controlPlane:
   volumes:
