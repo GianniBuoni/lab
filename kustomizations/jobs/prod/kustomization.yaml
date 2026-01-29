@@ -2,8 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/renovate
-- ../../../features/rook-ceph-toolbox
 components:
-- ../../../components/rook-ceph-nfs-export
 - ../../../components/renovate-config
 - ../../../components/secrets-prod/renovate-auth
