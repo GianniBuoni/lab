@@ -1,7 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../../../features/home-assistant
+- ../../../features/media-stack-deps
+- ../../../features/jellyfin
 components:
-- ../../../components/home-assistant-values
-- ../../../components/dashboards-dev
+- ../../../components/media-stack-storage
+- ../../../components/media-stack-security-context

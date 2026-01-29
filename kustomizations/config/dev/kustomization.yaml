@@ -5,6 +5,5 @@ resources:
 - ../../../features/rook-ceph-cluster-rbd
 - ../../../features/rook-ceph-cluster-fs
 - ../../../features/rook-ceph-nfs
-- ../../../features/tailscale-ha-proxy
 components:
 - ../../../components/rook-ceph-values-dev

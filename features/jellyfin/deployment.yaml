@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: jellyfin
+    storage: media-stack
   name: jellyfin
   annotations:
     reloader.stakater.com/auto: "true"
@@ -16,45 +17,20 @@ spec:
       labels:
         app: jellyfin
     spec:
-      initContainers:
-      - name: jellyfin-data
-        image: busybox:latest@sha256:e226d6308690dbe282443c8c7e57365c96b5228f0fe7f40731b5d84d37a06839
-        command:
-        - "/bin/sh"
-        - "-c"
-        - |
-          mkdir -p /data/jellyfin/anime
-          mkdir -p /data/jellyfin/movies
-          mkdir -p /data/jellyfin/tv
-          chown 1000 -R /data/jellyfin
-        volumeMounts:
-        - name: datadir
-          mountPath: /data
       containers:
-      - image: lscr.io/linuxserver/jellyfin:10.11.5@sha256:313571f253bf1035809f6856bb063904456226ef3899b96e60ee4597b3477246
+      - image: jellyfin/jellyfin:10.11.6@sha256:333b647716631443a43c7fabac4b0c46b4e2f036bad19547e00958f10f721b85
         name: jellyfin
-        envFrom:
-        - configMapRef:
-            name: linux-server-io-env
         ports:
         - name: http
           containerPort: 8096
-        - name: local-udp
-          containerPort: 7359
-          protocol: UDP
         volumeMounts:
         - name: configdir
           mountPath: /config
-        - name: datadir
-          subPath: jellyfin
-          mountPath: /data
+      initContainers: []
       volumes:
       - name: configdir
         persistentVolumeClaim:
           claimName: jellyfin-config-pvc
-      - name: datadir
-        persistentVolumeClaim:
-          claimName: media-stack-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
