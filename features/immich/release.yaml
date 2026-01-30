@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: immich
+spec:
+  interval: 24h
+  url: https://immich-app.github.io/immich-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: immich
+      version: 0.10.x
+      sourceRef:
+        kind: HelmRepository
+        name: immich
+      interval: 24h
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  valuesFrom: []

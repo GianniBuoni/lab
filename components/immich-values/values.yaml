@@ -1,0 +1,40 @@
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          DB_URL:
+            valueFrom:
+              secretKeyRef:
+                name: immich-db-app
+                key: uri
+
+immich:
+  metrics:
+    enabled: false
+  persistence:
+    library:
+      existingClaim: immich-library-pvc
+  configuration:
+    storageTemplate:
+      enabled: true
+      template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
+    image:
+      fullsize:
+        enabled: true
+        format: webp
+      preview:
+        format: webp
+
+valkey:
+  enabled: true
+
+machine-learning:
+  enabled: true
+  persistence:
+    cache:
+      enabled: true
+      size: 10Gi
+      type: persistentVolumeClaim
+      accessMode: ReadWriteMany
+      storageClass: ceph-fs
