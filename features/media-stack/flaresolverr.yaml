@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: flaresolverr
+    security: lscr
   name: flaresolverr
 spec:
   replicas: 1
@@ -23,6 +24,10 @@ spec:
         env:
         - name: TZ
           value: America/New_York
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
 ---
 apiVersion: v1
 kind: Service

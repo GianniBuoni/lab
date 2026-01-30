@@ -3,11 +3,15 @@ kind: Deployment
 metadata:
   labels:
     app: bazarr
+    security: lscr
+    storage: media-stack
   name: bazarr
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: bazarr
@@ -17,14 +21,11 @@ spec:
         app: bazarr
     spec:
       containers:
-      - image: lscr.io/linuxserver/bazarr:1.5.5-development@sha256:f27d1ce33fc705c91162fe20ab87283ed40b774934552f87fd4423091acf117f
+      - image: lscr.io/linuxserver/bazarr:1.5.4@sha256:d6492cc79ca5e12fe617c7285e7ebd60d4e7f0e93ec7faa78338dba91f07a91e
         name: bazarr
         ports:
         - name: http
           containerPort: 6767
-        envFrom:
-        - configMapRef:
-            name: linux-server-io-env
         volumeMounts:
         - name: configdir
           mountPath: /config
@@ -34,9 +35,6 @@ spec:
       - name: configdir
         persistentVolumeClaim:
           claimName: bazarr-config-pvc
-      - name: datadir
-        persistentVolumeClaim:
-          claimName: media-stack-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

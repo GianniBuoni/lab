@@ -3,11 +3,14 @@ kind: Deployment
 metadata:
   labels:
     app: prowlarr
+    security: lscr
   name: prowlarr
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: prowlarr
@@ -22,9 +25,6 @@ spec:
         ports:
         - name: http
           containerPort: 9696
-        envFrom:
-        - configMapRef:
-            name: linux-server-io-env
         volumeMounts:
         - name: configdir
           mountPath: /config
