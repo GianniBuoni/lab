@@ -18,7 +18,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`jellyfin.noodoodle.us`)
+  - match: Host(`jellyfin.int.noodoodle.us`)
     services:
     - name: jellyfin-web
       namespace: media-stack
