@@ -15,7 +15,6 @@ patches:
       path: /spec/template/spec/containers/0/volumeMounts/0
       value:
         name: datadir
-        subPath: jellyfin
         mountPath: /media
 - target:
     kind: Deployment
@@ -53,10 +52,10 @@ patches:
         - "/bin/sh"
         - "-c"
         - |
-          mkdir -p /data/deluge/completed
-          mkdir -p /data/deluge/incomplete
-          mkdir -p /data/deluge/torrents
-          chown 1000 -R /data/deluge
+          mkdir -p /media/deluge/completed
+          mkdir -p /media/deluge/incomplete
+          mkdir -p /media/deluge/torrents
+          chown 1000 -R /media/deluge
         volumeMounts:
         - name: datadir
-          mountPath: /data
+          mountPath: /media
