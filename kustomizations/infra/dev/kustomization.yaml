@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/traefik
+- ../../../features/cloudnative-pg
