@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../../features/deluge
 - ../../../features/media-stack-deps
+- ../../../features/media-stack
 - ../../../features/home-assistant
 - ../../../features/jellyfin
 - ../../../features/traefik-dash-ingress
