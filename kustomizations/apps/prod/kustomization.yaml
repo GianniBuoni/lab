@@ -1,9 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- ../../../features/deluge
+- ../../../features/media-stack-deps
 - ../../../features/home-assistant
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
 components:
+- ../../../components/secrets-prod/deluge-auth
 - ../../../components/dashboards-tls
 - ../../../components/home-assistant-values
+- ../../../components/lscr-security-context
+- ../../../components/media-stack-storage

@@ -18,7 +18,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`deluge.ts.noodoodle.us`)
+  - match: Host(`deluge.int.noodoodle.us`)
     services:
     - name: deluge-web
       namespace: media-stack
