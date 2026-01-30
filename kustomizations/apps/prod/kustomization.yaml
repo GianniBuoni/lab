@@ -4,6 +4,7 @@ resources:
 - ../../../features/deluge
 - ../../../features/media-stack-deps
 - ../../../features/home-assistant
+- ../../../features/jellyfin
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
 components:
