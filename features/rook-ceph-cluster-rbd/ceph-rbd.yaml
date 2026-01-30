@@ -22,7 +22,7 @@ kind: CephBlockPool
 metadata:
   name: nfs
 spec:
-  failureDomain: osd
+  failureDomain: host
   name: .nfs
   replicated:
     size: 3
