@@ -7,5 +7,6 @@ resources:
 - ../../../features/rook-ceph-cluster-rbd
 - ../../../features/rook-ceph-cluster-fs
 - ../../../features/rook-ceph-nfs
+- ../../../features/rook-ceph-toolbox
 components:
 - ../../../components/secrets-prod/cert-manager-issuer
