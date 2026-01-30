@@ -4,6 +4,7 @@ metadata:
   labels:
     app: jellyfin
     storage: media-stack
+    security: lscr
   name: jellyfin
   annotations:
     reloader.stakater.com/auto: "true"
@@ -26,6 +27,10 @@ spec:
         volumeMounts:
         - name: configdir
           mountPath: /config
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
       initContainers: []
       volumes:
       - name: configdir

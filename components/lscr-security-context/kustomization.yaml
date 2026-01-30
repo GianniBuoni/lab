@@ -3,7 +3,7 @@ kind: Component
 patches:
 - target:
     kind: Deployment
-    namespace: media-stack
+    labelSelector: security=lscr
   patch: |
     - op: add
       path: /spec/template/spec/securityContext
@@ -15,18 +15,7 @@ patches:
         seccompProfile:
           type: RuntimeDefault
     - op: add
-      path: /spec/template/spec/containers/0/securityContext
-      value:
-        allowPrivilegeEscalation: false
-        runAsNonRoot: true
-        capabilities:
-          drop: ["ALL"]
-    - op: add
       path: /spec/template/spec/containers/0/env
       value:
-      - name: PUID
-        value: "1000"
-      - name: PGID
-        value: "1000"
       - name: TZ
         value: America/New_York
