@@ -35,11 +35,28 @@ patches:
           mkdir -p /media/jellyfin/movies
           mkdir -p /media/jellyfin/tv
           chown 1000 -R /media/jellyfin
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsNonRoot: true
-          capabilities:
-            drop: ["ALL"]
         volumeMounts:
         - name: datadir
           mountPath: /media
+- target:
+    kind: Deployment
+    name: deluge
+    namespace: media-stack
+  # NOTE: deluge-auth targets initContainer[0]
+  patch: |
+    - op: add
+      path: /spec/template/spec/initContainers/1
+      value:
+        image: busybox:latest
+        name: deluge-data-init
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          mkdir -p /data/deluge/completed
+          mkdir -p /data/deluge/incomplete
+          mkdir -p /data/deluge/torrents
+          chown 1000 -R /data/deluge
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
