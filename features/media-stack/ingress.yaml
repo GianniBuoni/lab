@@ -6,22 +6,22 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`bazarr.ts.noodoodle.us`)
+  - match: Host(`bazarr.int.noodoodle.us`)
     services:
     - name: bazarr-web
       namespace: media-stack
       port: 80
-  - match: Host(`prowlarr.ts.noodoodle.us`)
+  - match: Host(`prowlarr.int.noodoodle.us`)
     services:
     - name: prowlarr-web
       namespace: media-stack
       port: 80
-  - match: Host(`radarr.ts.noodoodle.us`)
+  - match: Host(`radarr.int.noodoodle.us`)
     services:
     - name: radarr-web
       namespace: media-stack
       port: 80
-  - match: Host(`sonarr.ts.noodoodle.us`)
+  - match: Host(`sonarr.int.noodoodle.us`)
     services:
     - name: sonarr-web
       namespace: media-stack
