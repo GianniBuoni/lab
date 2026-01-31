@@ -1,0 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich-ingress
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`immich.int.noodoodle.us`)
+    services:
+    - name: immich-server
+      namespace: immich
+      port: http
