@@ -18,3 +18,11 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
+  values:
+    csi:
+      pluginTolerations:
+      - key: storage
+        operator: Exists
+      provisionerTolerations:
+      - key: storage
+        operator: Exists
