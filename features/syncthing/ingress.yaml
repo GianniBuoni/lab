@@ -6,11 +6,11 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`syncthing.ts.noodoodle.us`)
+  - match: Host(`syncthing.int.noodoodle.us`)
     services:
     - name: syncthing-web
       namespace: syncthing
-      port: 80
+      port: http
 ---
 apiVersion: v1
 kind: Service
@@ -23,35 +23,3 @@ spec:
   - name: http
     port: 80
     targetPort: 8384
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: syncthing-tcp
-  annotations:
-    metallb.universe.tf/allow-shared-ip: syncthing
-spec:
-  type: LoadBalancer
-  selector:
-    app: syncthing
-  ports:
-  - name: tcp
-    port: 22000
-    targetPort: 22000
-    protocol: TCP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: syncthing-udp
-  annotations:
-    metallb.universe.tf/allow-shared-ip: syncthing
-spec:
-  type: LoadBalancer
-  selector:
-    app: syncthing
-  ports:
-  - name: udp
-    port: 22000
-    targetPort: 22000
-    protocol: UDP

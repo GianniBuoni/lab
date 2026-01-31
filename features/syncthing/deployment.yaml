@@ -5,6 +5,8 @@ metadata:
     app: syncthing
   name: syncthing
 spec:
+  strategy:
+    type: Recreate
   replicas: 1
   selector:
     matchLabels:
@@ -17,8 +19,13 @@ spec:
       containers:
       - image: lscr.io/linuxserver/syncthing:2.0.13@sha256:de603dda4513191b47d18bae93decd4683a20b212a3cd9595b2e681bb2ad9d34
         name: syncthing
-        securityContext:
-          privileged: false
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: America/New_York
         ports:
         - containerPort: 8384
         - containerPort: 22000
@@ -26,8 +33,21 @@ spec:
           protocol: UDP
         - containerPort: 21027
           protocol: UDP
-        env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
+        volumeMounts:
+        - name: datadir
+          mountPath: /config
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: syncthing-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: syncthing-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
