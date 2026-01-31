@@ -8,6 +8,7 @@ resources:
 - ../../../features/jellyfin
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
+- ../../../features/syncthing
 components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/dashboards-tls
