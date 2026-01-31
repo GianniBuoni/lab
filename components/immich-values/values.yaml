@@ -8,6 +8,8 @@ controllers:
     strategy: Recreate
     containers:
       main:
+        image:
+          tag: v2.5.2
         env:
           DB_URL:
             valueFrom:
