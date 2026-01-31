@@ -5,6 +5,7 @@ resources:
 - ../../../features/media-stack-deps
 - ../../../features/media-stack
 - ../../../features/home-assistant
+- ../../../features/immich
 - ../../../features/jellyfin
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
@@ -13,5 +14,6 @@ components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/dashboards-tls
 - ../../../components/home-assistant-values
+- ../../../components/immich-values
 - ../../../components/lscr-security-context
 - ../../../components/media-stack-storage
