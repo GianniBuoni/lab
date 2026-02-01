@@ -7,13 +7,16 @@ resources:
 - ../../../features/home-assistant
 - ../../../features/immich
 - ../../../features/jellyfin
+- ../../../features/palworld
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
 - ../../../features/syncthing
 components:
 - ../../../components/secrets-prod/deluge-auth
+- ../../../components/secrets-prod/palworld-auth
 - ../../../components/dashboards-tls
 - ../../../components/home-assistant-values
 - ../../../components/immich-values
+- ../../../components/palworld-values
 - ../../../components/lscr-security-context
 - ../../../components/media-stack-storage
