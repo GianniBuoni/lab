@@ -16,7 +16,7 @@ data:
   PUBLIC_IP: ""
   PUBLIC_PORT: ""
   # Server info
-  SERVER_NAME: Lost in the woods
+  SERVER_NAME: jontopia
   SERVER_DESCRIPTION: ""
   UPDATE_ON_BOOT: "true"
   RCON_ENABLED: "false"
