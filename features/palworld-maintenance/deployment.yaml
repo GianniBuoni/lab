@@ -25,12 +25,7 @@ spec:
         volumeMounts:
         - name: datadir
           mountPath: /palworld
-        - name: backupdir
-          mountPath: /palworld/backups
       volumes:
       - name: datadir
         persistentVolumeClaim:
-          claimName: palworld-pvc
-      - name: backupdir
-        persistentVolumeClaim:
-          claimName: palworld-backup-pvc
+          claimName: palworld-pvc-palworld-server-0

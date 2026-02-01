@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../../../features/immich
-- ../../../features/syncthing
+- ../../../features/palworld
+- ../../../features/rook-ceph-ingress
 components:
-- ../../../components/immich-values
-- ../../../components/lscr-security-context
+- ../../../components/palworld-security-context
+- ../../../components/palworld-values
+- ../../../components/secrets-dev/palworld-auth

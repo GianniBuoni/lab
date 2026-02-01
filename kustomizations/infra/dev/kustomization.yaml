@@ -3,4 +3,11 @@ kind: Kustomization
 resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/traefik
+- ../../../features/traefik-tailscale-svc
+- ../../../features/tailscale
 - ../../../features/cloudnative-pg
+components:
+- ../../../components/traefik-values
+- ../../../components/traefik-values-tailscale
+- ../../../components/tailscale-values-dev
+- ../../../components/secrets-dev/tailscale-oauth
