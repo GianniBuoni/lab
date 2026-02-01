@@ -5,4 +5,4 @@ resources:
 - namespace.yaml
 - deployment.yaml
 - ingress.yaml
-# - lb.yaml
+- lb.yaml
