@@ -5,7 +5,7 @@ metadata:
 spec:
   cephVersion:
     # check supported ceph images before merging any renovate PRs!
-    image: quay.io/ceph/ceph:v19.2.3
+    image: quay.io/ceph/ceph:v20.2.0@sha256:1228c3d05e45fbc068a8c33614e4409b6dac688bcc77369b06009b5830fa8d86
     allowUnsupported: false
   dataDirHostPath: /var/lib/rook
   skipUpgradeChecks: false
