@@ -20,7 +20,7 @@ spec:
           restartPolicy: Never
           containers:
           - name: renovate
-            image: renovate/renovate:42.92.11@sha256:de9d73d637da5a170d0b43c122d259a5e3baac6a7f7c7b46a89e0b9e9d9938c2
+            image: renovate/renovate:43.2.1@sha256:4146ffd09c5c8311d0d54576ce3fb2ddab5dbb77be62390b6f57185b5bb2c01a
             envFrom: []
             volumeMounts: []
           volumes: []
