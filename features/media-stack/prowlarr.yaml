@@ -20,7 +20,7 @@ spec:
         app: prowlarr
     spec:
       containers:
-      - image: lscr.io/linuxserver/prowlarr:2.3.2-nightly@sha256:2ab03c73be91f7b5f69ac33667394d563a1bb2cb7da5f2429a148c3df805df34
+      - image: lscr.io/linuxserver/prowlarr:2.3.0@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
         name: prowlarr
         ports:
         - name: http
