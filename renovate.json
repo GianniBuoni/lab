@@ -1,11 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+  "schedule": ["* 0-7 * * 1"],
+  "timezone": "America/New_York",
   "kubernetes": {
     "managerFilePatterns": ["**/features/**/*.yaml"]
   },
   "flux": {
     "managerFilePatterns": ["**/features/**/*.yaml"]
   },
-  "prHourlyLimit": 5,
-  "extends": ["config:best-practices"]
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchDepNames": ["!**/ceph", "!**/rook-ceph"],
+      "automerge": true
+    }
+  ]
 }

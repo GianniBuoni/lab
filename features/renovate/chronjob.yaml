@@ -10,7 +10,8 @@ metadata:
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
-  schedule: '0 * * * 1'
+  schedule: '0 0-7 * * *'
+  timeZone: America/New_York
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
