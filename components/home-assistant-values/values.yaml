@@ -4,6 +4,8 @@ configuration:
 controller:
   type: Deployment
 
+deploymentStrategy: Recreate
+
 env:
 - name: TZ
   value: America/New_York
