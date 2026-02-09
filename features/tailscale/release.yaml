@@ -24,7 +24,7 @@ spec:
   chart:
     spec:
       chart: tailscale-operator
-      version: 1.92.x
+      version: 1.94.x
       sourceRef:
         kind: HelmRepository
         name: tailscale
