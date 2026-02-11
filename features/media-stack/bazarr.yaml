@@ -29,8 +29,6 @@ spec:
         volumeMounts:
         - name: configdir
           mountPath: /config
-        - name: datadir
-          mountPath: /data
       volumes:
       - name: configdir
         persistentVolumeClaim:
