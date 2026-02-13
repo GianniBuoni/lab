@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
 - ../../../features/actions-runner-controller
 - ../../../features/actions-runner-scale-set
-components: []
+components:
+- ../../../components/secrets-dev/arc-auth
