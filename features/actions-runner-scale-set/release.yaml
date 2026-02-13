@@ -25,7 +25,8 @@ metadata:
 spec:
   interval: 5m
   dependsOn:
-    name: arc-operator
+  - name: arc-operator
+    namespace: arc-system
   chartRef:
     kind: OCIRepository
     name: actions-runner-scale-set
