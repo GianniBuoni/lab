@@ -2,6 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: actions-runner-controller
+  namespace: arc-system
 spec:
   interval: 24h
   url: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
@@ -15,6 +16,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: actions-runner-scale-set
+  namespace: arc-runners
 spec:
   interval: 24h
   url: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set

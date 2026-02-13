@@ -3,7 +3,7 @@ kind: HelmRelease
 annotations:
   reloader.stakater.com/auto: "true"
 metadata:
-  name: arc-runners
+  name: change-me
 spec:
   interval: 5m
   dependsOn:
