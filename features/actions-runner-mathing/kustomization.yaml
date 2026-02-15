@@ -13,3 +13,4 @@ patches:
       path: /spec/values
       value:
         githubConfigUrl: https://github.com/GianniBuoni/mathing
+        maxRunners: 2
