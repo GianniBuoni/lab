@@ -1,8 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../../../features/actions-runner-controller
-- ../../../features/actions-runner-demo
-- ../../../features/actions-runner-mathing
-components:
-- ../../../components/secrets-dev/arc-auth
+- ../../../features/rook-ceph-operator
